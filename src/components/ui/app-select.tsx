@@ -116,7 +116,7 @@ function triggerVariantClasses(variant: AppSelectVariant | undefined) {
 // ---------------------------------------------------------------------------
 
 /**
- * AppSelect — the branded Select used across the MIA Training Academy site.
+ * AppSelect — the branded Select used across the MIA Academy site.
  *
  * Wraps the shadcn/Radix Select primitives with a label, helper text, error
  * state, an animated chevron and rich options (icon + description).

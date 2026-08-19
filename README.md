@@ -1,6 +1,6 @@
 # MIA Elevate
 
-Act as a Principal UI/UX Designer and Lead Web Developer. Create a high-converting, modern, elegant, and visually impressive multi-page informative website UI/UX design for "MIA Training Academy".
+Act as a Principal UI/UX Designer and Lead Web Developer. Create a high-converting, modern, elegant, and visually impressive multi-page informative website UI/UX design for "MIA Academy".
 
 ---
 
@@ -126,7 +126,7 @@ SITE STRUCTURE & PAGE SECTION BREAKDOWNS:
 
 - Page Hero: Warm header setting expectations for customer response times.
 
-- Contact Split Screen: 
+- Contact Split Screen:
 
   - Left: Clean contact form (Name, Email, Phone, Program of Interest, Message, Submit Button).
 

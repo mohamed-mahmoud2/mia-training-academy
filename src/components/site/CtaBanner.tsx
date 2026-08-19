@@ -1,4 +1,6 @@
-import { Link } from "@tanstack/react-router";
+"use client";
+
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "./Reveal";
 import { useLanguage } from "@/lib/i18n";
@@ -24,21 +26,23 @@ export function CtaBanner({ title, description }: { title?: string; description?
           <h2 className="text-3xl font-semibold text-balance sm:text-4xl">{resolvedTitle}</h2>
           <p className="mt-4 text-primary-foreground/85">{resolvedDescription}</p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
+            {/* Apply online — disabled for now
             <Button
               asChild
               variant="hero"
               size="default"
               className="sm:h-11 sm:px-7 sm:rounded-lg xl:h-13 xl:px-9 xl:rounded-xl xl:text-base"
             >
-              <Link to="/admissions">{t.cta.applyNow}</Link>
+              <Link href="/admissions">{t.cta.applyNow}</Link>
             </Button>
+            */}
             <Button
               asChild
               variant="onDark"
               size="default"
               className="sm:h-11 sm:px-7 sm:rounded-lg xl:h-13 xl:px-9 xl:rounded-xl xl:text-base"
             >
-              <Link to="/contact">{t.cta.talkToAdvisor}</Link>
+              <Link href="/contact">{t.cta.talkToAdvisor}</Link>
             </Button>
           </div>
         </Reveal>

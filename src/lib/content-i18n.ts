@@ -1,51 +1,30 @@
-import type { Faculty } from "@/data/site";
+import type { Faculty, Program } from "@/data/site";
 import type { Language } from "@/lib/i18n";
 
-type FacultyText = { name: string; description: string };
 type PostText = { title: string; excerpt: string; content?: string[] };
 type TestimonialText = { quote: string; program: string };
 type FaqText = { question: string; answer: string };
 type StaffText = { role: string; qualification: string; bio: string };
+type ProgramText = {
+  title: string;
+  duration: string;
+  format: string;
+  certification: string;
+  tags: string[];
+  excerpt: string;
+  objectives: string[];
+  curriculum: { term: string; items: string[] }[];
+  instructor: { title: string; bio: string; credentials: string };
+  tuition: { label: string; note: string }[];
+};
 
-const facultyAr: Record<string, FacultyText> = {
-  "faculty-journalism-media": {
-    name: "الصحافة والإعلام",
-    description: "التحرير الصحفي، الإذاعة، الإعلام الرقمي والاتصالات عبر الصحافة والراديو والشاشة.",
-  },
-  "faculty-business-administration": {
-    name: "إدارة الأعمال",
-    description: "الإدارة، التمويل، التسويق، ريادة الأعمال ومسارات التعليم التنفيذي.",
-  },
-  "faculty-information-systems": {
-    name: "نظم المعلومات",
-    description:
-      "برمجة وبرمجيات تُدرَّس في معامل حاسوب مجهزة بالكامل، تؤهل الخريجين للعمل في تصميم المواقع والتطبيقات أو كمسؤولي تقنية معلومات في كبرى المؤسسات المصرية.",
-  },
-  "faculty-nursing": {
-    name: "التمريض",
-    description: "الممارسة السريرية، رعاية المرضى، الصحة المجتمعية والتدريب داخل المستشفيات.",
-  },
-  "faculty-languages-translation": {
-    name: "اللغات والترجمة",
-    description: "العربية والإنجليزية والفرنسية والترجمة المتخصصة للسياقات الأكاديمية والتجارية.",
-  },
-  "faculty-surveying-mapping": {
-    name: "المساحة ورسم الخرائط",
-    description:
-      "مساحة عامة للأراضي الزراعية وتخطيط الطرق والتطوير العقاري، بتدريب مكثف على أيدي مهندسين من كبرى شركات المقاولات في مصر.",
-  },
-  "faculty-petroleum-technology": {
-    name: "تكنولوجيا البترول",
-    description: "عمليات الاستكشاف، الحفر، هندسة المكامن والشهادات في قطاع الطاقة.",
-  },
-  "faculty-medical-analysis": {
-    name: "التحاليل الطبية",
-    description: "علوم المختبرات الإكلينيكية، التشخيص، أمراض الدم والممارسة المخبرية الطبية.",
-  },
-  "faculty-tourism-hotels": {
-    name: "السياحة والفنادق",
-    description: "عمليات الضيافة، إدارة السفر، الأغذية والمشروبات وإدارة الفنادق.",
-  },
+const categoryDescriptionAr: Record<string, string> = {
+  "Business & Leadership":
+    "مسارات الإدارة والتمويل وتنفيذ المشاريع وقيادة الأفراد، مبنية حول قرارات تشغيلية حقيقية.",
+  Technology:
+    "البيانات والتحليلات والذكاء الاصطناعي التطبيقي، بتدريب عملي في معامل حاسوب مجهزة بالكامل.",
+  "Marketing & Media": "تسويق رقمي متكامل، من استراتيجية القنوات إلى قياس الحملات.",
+  Languages: "اللغة الإنجليزية المهنية والتواصل في بيئات العمل الدولية.",
 };
 
 const postAr: Record<string, PostText> = {
@@ -107,6 +86,10 @@ const categoryAr: Record<string, string> = {
   Professors: "أعضاء هيئة التدريس",
   "Industry Mentors": "مرشدون من قطاع الصناعة",
   "Guest Lecturers": "محاضرون ضيوف",
+  "Business & Leadership": "الأعمال والقيادة",
+  Technology: "التكنولوجيا",
+  "Marketing & Media": "التسويق والإعلام",
+  Languages: "اللغات",
 };
 
 const partnerAr: Record<string, string> = {
@@ -114,7 +97,7 @@ const partnerAr: Record<string, string> = {
   "Ministry of Industry and Trade": "وزارة الصناعة والتجارة",
   "Professional Academy for Teachers – Ministry of Education":
     "الأكاديمية المهنية للمعلمين - وزارة التربية والتعليم",
-  "National Council for Education and Training – Cabinet of Ministers":
+  "National Council for Education and – Cabinet of Ministers":
     "المجلس الوطني للتعليم والتدريب - مجلس الوزراء",
   "Leading Egyptian public universities": "كبرى الجامعات المصرية الحكومية",
 };
@@ -270,14 +253,290 @@ const staffAr: Record<string, StaffText> = {
   },
 };
 
+const programAr: Record<string, ProgramText> = {
+  "business-administration": {
+    title: "إدارة الأعمال",
+    duration: "9 أشهر",
+    format: "مختلط · مسائي",
+    certification: "دبلوم MIA المهني",
+    tags: ["القيادة", "الاستراتيجية", "التمويل"],
+    excerpt:
+      "ابنِ الأدوات الإدارية اللازمة لقيادة الفرق، وقراءة القوائم المالية، وتحقيق النمو في المؤسسات سريعة التغير.",
+    objectives: [
+      "ترجمة الاستراتيجية المؤسسية إلى خطط تشغيلية قابلة للقياس",
+      "تفسير القوائم المالية وبناء موازنات قابلة للتبرير",
+      "قيادة فرق متعددة التخصصات عبر تغيير منظم",
+      "تطبيق أطر القرار المبنية على البيانات في حالات عمل حقيقية",
+    ],
+    curriculum: [
+      {
+        term: "الوحدة 1 — الأساسيات",
+        items: [
+          "مبادئ الإدارة الحديثة",
+          "اقتصاديات الأعمال وهيكل السوق",
+          "أساسيات المحاسبة المالية",
+        ],
+      },
+      {
+        term: "الوحدة 2 — التطبيق العملي",
+        items: [
+          "استراتيجية التسويق وتحليلات العملاء",
+          "تصميم العمليات وسلسلة التوريد",
+          "التمويل المؤسسي والتقييم",
+        ],
+      },
+      {
+        term: "الوحدة 3 — مشروع التخرج",
+        items: [
+          "القيادة والسلوك التنظيمي",
+          "مشروع استشاري حي مع شركة شريكة",
+          "العرض التنفيذي والإرشاد المهني",
+        ],
+      },
+    ],
+    instructor: {
+      title: "رئيس قسم إدارة الأعمال والقيادة",
+      bio: "مديرة استراتيجية إقليمية سابقة بخبرة 18 عامًا في استشارة الشركات متعددة الجنسيات عبر منطقة الشرق الأوسط وشمال أفريقيا، تقود الآن محفظة التعليم التنفيذي في MIA.",
+      credentials: "دكتوراه في الإدارة، INSEAD · محلل مالي معتمد (CFA)",
+    },
+    tuition: [
+      { label: "البرنامج الكامل", note: "خصم 5% عند السداد المقدم" },
+      { label: "خطة تقسيط", note: "بدون فوائد، لكل وحدة" },
+      { label: "منحة التفوق", note: "بناءً على مراجعة ملف الأعمال" },
+    ],
+  },
+  "data-analytics": {
+    title: "تحليل البيانات والذكاء الاصطناعي",
+    duration: "6 أشهر",
+    format: "معامل داخل الحرم الجامعي",
+    certification: "شهادة MIA + التحضير لامتحان المورد",
+    tags: ["بايثون", "SQL", "تعلم الآلة"],
+    excerpt:
+      "من جداول البيانات إلى النماذج الإنتاجية — مسار عملي نحو وظائف التحليلات مبني حول مجموعات بيانات حقيقية.",
+    objectives: [
+      "نمذجة واستعلام وتنظيف البيانات على نطاق واسع باستخدام SQL وبايثون",
+      "تصميم لوحات معلومات يستخدمها صناع القرار فعليًا",
+      "تدريب وتقييم ونشر نماذج التعلم الخاضع للإشراف",
+      "توصيل نتائج التحليل لأصحاب المصلحة غير التقنيين",
+    ],
+    curriculum: [
+      {
+        term: "الوحدة 1 — أساسيات البيانات",
+        items: ["النمذجة العلائقية و SQL المتقدم", "بايثون لمعالجة البيانات", "الإحصاء للمحللين"],
+      },
+      {
+        term: "الوحدة 2 — الرؤى والتصور البصري",
+        items: ["مبادئ تصميم لوحات المعلومات", "أدوات ذكاء الأعمال", "التجريب واختبار A/B"],
+      },
+      {
+        term: "الوحدة 3 — تعلم الآلة",
+        items: [
+          "مسارات عمل التعلم الخاضع للإشراف",
+          "تقييم النماذج والعدالة الخوارزمية",
+          "مشروع تخرج: منتج تعلم آلي متكامل",
+        ],
+      },
+    ],
+    instructor: {
+      title: "المدرّب الرئيسي، البيانات والذكاء الاصطناعي",
+      bio: "مهندس تعلم آلي أطلق أنظمة توصية وتنبؤ لكبرى شركات التجارة الإلكترونية الإقليمية.",
+      credentials: "ماجستير علوم الحاسب · مهندس تعلم آلي محترف معتمد من Google Cloud",
+    },
+    tuition: [
+      { label: "البرنامج الكامل", note: "يشمل الوصول للمعمل وقسيمة الامتحان" },
+      { label: "خطة تقسيط", note: "بدون فوائد، لكل وحدة" },
+      { label: "مساعدة قائمة على الحاجة", note: "مراجعة مالية موثقة" },
+    ],
+  },
+  "digital-marketing": {
+    title: "التسويق الرقمي",
+    duration: "5 أشهر",
+    format: "مباشر عبر الإنترنت",
+    certification: "شهادة MIA",
+    tags: ["الأداء", "المحتوى", "التحليلات"],
+    excerpt:
+      "خطط وأطلق وقِس حملات تسويقية متكاملة بميزانيات وملخصات وملاحظات إبداعية من ممارسين فعليين في المجال.",
+    objectives: [
+      "بناء استراتيجيات قنوات مبنية على بحث الجمهور",
+      "تشغيل وتحسين الإعلانات المدفوعة عبر البحث والسوشيال ميديا",
+      "إنتاج نظام محتوى يراكم الوصول العضوي",
+      "تقرير الأداء مقابل الأهداف التجارية",
+    ],
+    curriculum: [
+      {
+        term: "الوحدة 1 — الاستراتيجية",
+        items: ["بحث الجمهور والتموضع", "تصميم قمع التسويق", "هيكلة العلامة والرسائل"],
+      },
+      {
+        term: "الوحدة 2 — القنوات",
+        items: [
+          "حملات البحث والتسوق",
+          "الإعلانات الاجتماعية المدفوعة واختبار الإبداع",
+          "تحسين محركات البحث وعمليات المحتوى",
+        ],
+      },
+      {
+        term: "الوحدة 3 — القياس",
+        items: ["الإسناد والتحليلات", "أتمتة التسويق", "إطلاق حملة مشروع التخرج"],
+      },
+    ],
+    instructor: {
+      title: "مرشدة التسويق النمو",
+      bio: "قائدة نمو أدارت ميزانيات إعلامية إقليمية بمبالغ ضخمة لعلامات استهلاكية وتقنية مالية.",
+      credentials: "ماجستير إدارة أعمال - تسويق · معتمدة من Meta وGoogle Ads",
+    },
+    tuition: [
+      { label: "البرنامج الكامل", note: "يشمل أرصدة إعلانية" },
+      { label: "خطة تقسيط", note: "بدون فوائد، لكل وحدة" },
+      { label: "خصم الخريجين", note: "لخريجي MIA" },
+    ],
+  },
+  "project-management": {
+    title: "مسار إدارة المشاريع الاحترافي",
+    duration: "4 أشهر",
+    format: "عطلات نهاية الأسبوع",
+    certification: "التحضير لامتحان PMP®",
+    tags: ["PMP", "أجايل", "المخاطر"],
+    excerpt: "مسار منضبط نحو الاعتماد المهني مع محاكاة امتحانات ونماذج وتدريب من ممارسين معتمدين.",
+    objectives: [
+      "إتقان دورة حياة المشروع الكاملة ومجالات المعرفة",
+      "بناء جداول وموازنات وسجلات مخاطر قابلة للتطبيق",
+      "الجمع بين أساليب التنفيذ التنبؤية والرشيقة (أجايل)",
+      "خوض امتحان الاعتماد بثقة",
+    ],
+    curriculum: [
+      {
+        term: "الوحدة 1",
+        items: ["الإطار العام والتكامل", "النطاق والجدول الزمني", "إدارة التكلفة"],
+      },
+      {
+        term: "الوحدة 2",
+        items: ["الجودة والموارد", "المخاطر والمشتريات", "إشراك أصحاب المصلحة"],
+      },
+      {
+        term: "الوحدة 3",
+        items: ["التنفيذ الرشيق والهجين", "محاكاة الامتحان", "جلسات تدريب إرشادية"],
+      },
+    ],
+    instructor: {
+      title: "عضو هيئة تدريس أول، إدارة تنفيذ المشاريع",
+      bio: "نفّذ برامج بنية تحتية وتقنية معلومات عبر مصر ودول الخليج، بخبرة 12 عامًا في تدريب PMP.",
+      credentials: "PMP · PMI-ACP · ممارس PRINCE2",
+    },
+    tuition: [
+      { label: "البرنامج الكامل", note: "يشمل محاكي الامتحان" },
+      { label: "خطة تقسيط", note: "بدون فوائد" },
+      { label: "دفعة مؤسسية", note: "لمجموعات من خمسة أفراد أو أكثر" },
+    ],
+  },
+  "english-communication": {
+    title: "اللغة الإنجليزية المهنية والتواصل في بيئة العمل",
+    duration: "3 أشهر",
+    format: "داخل الحرم الجامعي / عبر الإنترنت",
+    certification: "شهادة إتقان من MIA",
+    tags: ["إنجليزية الأعمال", "العرض التقديمي", "الكتابة"],
+    excerpt: "تحدّث واكتب وقدّم بوضوح في بيئات العمل الدولية — بتقييم مقابل مستويات إتقان معتمدة.",
+    objectives: [
+      "التواصل بثقة في الاجتماعات والمفاوضات",
+      "كتابة مراسلات وتقارير أعمال دقيقة",
+      "تقديم عروض منظمة ومقنعة",
+      "التقدم بمستوى إتقان كامل عند التخرج",
+    ],
+    curriculum: [
+      {
+        term: "الوحدة 1",
+        items: ["الطلاقة في بيئة العمل", "عيادة النطق", "البريد الإلكتروني والمراسلات"],
+      },
+      {
+        term: "الوحدة 2",
+        items: ["كتابة التقارير والمقترحات", "تيسير الاجتماعات", "لغة التفاوض"],
+      },
+      {
+        term: "الوحدة 3",
+        items: ["معمل العروض التقديمية", "تدريب على المقابلات", "التقييم النهائي للإتقان"],
+      },
+    ],
+    instructor: {
+      title: "رئيسة دراسات اللغات",
+      bio: "متخصصة لغوية بتدريب من كامبريدج، بخبرة 15 عامًا في تدريس التواصل بالأعمال عبر ثلاث قارات.",
+      credentials: "ماجستير اللغويات التطبيقية · CELTA · DELTA",
+    },
+    tuition: [
+      { label: "البرنامج الكامل", note: "يشمل المواد التعليمية" },
+      { label: "خطة تقسيط", note: "بدون فوائد" },
+      { label: "سعر الطلاب", note: "بطاقة جامعية سارية" },
+    ],
+  },
+  "hr-management": {
+    title: "دبلوم إدارة الموارد البشرية",
+    duration: "7 أشهر",
+    format: "مختلط",
+    certification: "دبلوم MIA المهني",
+    tags: ["المواهب", "قانون العمل", "التحليلات"],
+    excerpt:
+      "صمّم أنظمة الأفراد التي تعتمد عليها المؤسسات الحديثة — التوظيف والأداء والتعويضات والامتثال.",
+    objectives: [
+      "بناء قنوات توظيف تقلل زمن التعيين النوعي",
+      "تصميم أطر الأداء والتعويضات",
+      "تطبيق قانون العمل بثقة في الممارسة اليومية",
+      "استخدام تحليلات الأفراد لتوجيه تخطيط القوى العاملة",
+    ],
+    curriculum: [
+      {
+        term: "الوحدة 1",
+        items: ["استراتيجية وهيكل الموارد البشرية", "استقطاب المواهب", "تصميم برنامج التهيئة"],
+      },
+      {
+        term: "الوحدة 2",
+        items: ["إدارة الأداء", "التعويضات والمزايا", "أساسيات قانون العمل"],
+      },
+      {
+        term: "الوحدة 3",
+        items: ["تحليلات الأفراد", "التطوير التنظيمي", "مشروع تدقيق موارد بشرية للتخرج"],
+      },
+    ],
+    instructor: {
+      title: "رئيسة قسم الأفراد والتنظيم",
+      bio: "مديرة موارد بشرية سابقة تحولت للتعليم، بنت وظائف الأفراد لشركات ناشئة سريعة النمو وشركات تابعة متعددة الجنسيات.",
+      credentials: "SHRM-SCP · ماجستير علم النفس التنظيمي",
+    },
+    tuition: [
+      { label: "البرنامج الكامل", note: "يشمل مكتبة الأدوات" },
+      { label: "خطة تقسيط", note: "بدون فوائد، لكل وحدة" },
+      { label: "منحة التفوق", note: "بناءً على المقابلة" },
+    ],
+  },
+};
+
+export function localizeProgram<T extends Program>(program: T, language: Language): T {
+  if (language !== "ar") return program;
+  const text = programAr[program.slug];
+  if (!text) return program;
+  return {
+    ...program,
+    title: text.title,
+    duration: text.duration,
+    format: text.format,
+    certification: text.certification,
+    tags: text.tags,
+    excerpt: text.excerpt,
+    objectives: text.objectives,
+    curriculum: text.curriculum,
+    instructor: { ...program.instructor, ...text.instructor },
+    tuition: program.tuition.map((row, i) => ({ ...row, ...text.tuition[i] })),
+  };
+}
+
 export function localizeFaculty<T extends Pick<Faculty, "slug" | "name" | "description">>(
   faculty: T,
   language: Language,
 ): T {
   if (language !== "ar") return faculty;
-  const text = facultyAr[faculty.slug];
-  if (!text) return faculty;
-  return { ...faculty, name: text.name, description: text.description };
+  return {
+    ...faculty,
+    name: categoryAr[faculty.name] ?? faculty.name,
+    description: categoryDescriptionAr[faculty.name] ?? faculty.description,
+  };
 }
 
 export function localizePost<

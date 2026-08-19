@@ -1,4 +1,6 @@
-import { Link } from "@tanstack/react-router";
+"use client";
+
+import Link from "next/link";
 import { ArrowRight, BriefcaseBusiness } from "lucide-react";
 import type { Faculty } from "@/data/site";
 import { useLanguage } from "@/lib/i18n";
@@ -10,9 +12,6 @@ export function FacultyCard({ faculty }: { faculty: Faculty }) {
 
   return (
     <article className="hover-lift group flex h-full flex-col rounded-2xl border border-border bg-card p-6 shadow-soft">
-      {/* <span className="w-fit rounded-full bg-primary-soft px-3 py-1 text-xs font-semibold text-secondary-foreground">
-        {t.faculties.badge}
-      </span> */}
       <h3 className="mt-4 text-xl leading-snug font-semibold text-foreground">{localized.name}</h3>
       <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{localized.description}</p>
 
@@ -37,8 +36,7 @@ export function FacultyCard({ faculty }: { faculty: Faculty }) {
       )}
 
       <Link
-        to="/programs/$slug"
-        params={{ slug: faculty.slug }}
+        href={`/programs/${faculty.slug}`}
         className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-accent-foreground"
       >
         {t.faculties.exploreFaculty}

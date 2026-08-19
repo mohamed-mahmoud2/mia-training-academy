@@ -1,35 +1,35 @@
-import classroom from "@/assets/classroom.jpg";
-import heroCampus from "@/assets/hero-campus.jpg";
-import lab from "@/assets/lab.jpg";
-import library from "@/assets/library.jpg";
-import graduationHero from "@/assets/blog/graduation-hero.jpeg";
-import graduation1 from "@/assets/blog/graduation-1.jpeg";
-import graduation2 from "@/assets/blog/graduation-2.jpeg";
-import graduation3 from "@/assets/blog/graduation-3.jpeg";
-import graduation4 from "@/assets/blog/graduation-4.jpeg";
-import graduation5 from "@/assets/blog/graduation-5.jpeg";
-import graduation6 from "@/assets/blog/graduation-6.jpeg";
-import recreationHero from "@/assets/blog/recreation-hero.jpeg";
-import recreation1 from "@/assets/blog/recreation-1.jpeg";
-import recreation2 from "@/assets/blog/recreation-2.jpeg";
-import recreation3 from "@/assets/blog/recreation-3.jpeg";
-import recreation4 from "@/assets/blog/recreation-4.jpeg";
-import recreation5 from "@/assets/blog/recreation-5.jpeg";
-import recreation6 from "@/assets/blog/recreation-6.jpeg";
-import recreation7 from "@/assets/blog/recreation-7.jpeg";
-import recreation8 from "@/assets/blog/recreation-8.jpeg";
-import recreation9 from "@/assets/blog/recreation-9.jpeg";
-import recreation10 from "@/assets/blog/recreation-10.jpeg";
-import recreation11 from "@/assets/blog/recreation-11.jpeg";
-import recreation12 from "@/assets/blog/recreation-12.jpeg";
-import recreation13 from "@/assets/blog/recreation-13.jpeg";
-import recreation14 from "@/assets/blog/recreation-14.jpeg";
-import recreation15 from "@/assets/blog/recreation-15.jpeg";
-import recreation16 from "@/assets/blog/recreation-16.jpeg";
-import recreation17 from "@/assets/blog/recreation-17.jpeg";
-import recreation18 from "@/assets/blog/recreation-18.jpeg";
-import recreation19 from "@/assets/blog/recreation-19.jpeg";
-import recreation20 from "@/assets/blog/recreation-20.jpeg";
+const classroom = "/images/classroom.jpg";
+const heroCampus = "/images/hero-campus.jpg";
+const lab = "/images/lab.jpg";
+const library = "/images/library.jpg";
+const graduationHero = "/images/blog/graduation-hero.jpeg";
+const graduation1 = "/images/blog/graduation-1.jpeg";
+const graduation2 = "/images/blog/graduation-2.jpeg";
+const graduation3 = "/images/blog/graduation-3.jpeg";
+const graduation4 = "/images/blog/graduation-4.jpeg";
+const graduation5 = "/images/blog/graduation-5.jpeg";
+const graduation6 = "/images/blog/graduation-6.jpeg";
+const recreationHero = "/images/blog/recreation-hero.jpeg";
+const recreation1 = "/images/blog/recreation-1.jpeg";
+const recreation2 = "/images/blog/recreation-2.jpeg";
+const recreation3 = "/images/blog/recreation-3.jpeg";
+const recreation4 = "/images/blog/recreation-4.jpeg";
+const recreation5 = "/images/blog/recreation-5.jpeg";
+const recreation6 = "/images/blog/recreation-6.jpeg";
+const recreation7 = "/images/blog/recreation-7.jpeg";
+const recreation8 = "/images/blog/recreation-8.jpeg";
+const recreation9 = "/images/blog/recreation-9.jpeg";
+const recreation10 = "/images/blog/recreation-10.jpeg";
+const recreation11 = "/images/blog/recreation-11.jpeg";
+const recreation12 = "/images/blog/recreation-12.jpeg";
+const recreation13 = "/images/blog/recreation-13.jpeg";
+const recreation14 = "/images/blog/recreation-14.jpeg";
+const recreation15 = "/images/blog/recreation-15.jpeg";
+const recreation16 = "/images/blog/recreation-16.jpeg";
+const recreation17 = "/images/blog/recreation-17.jpeg";
+const recreation18 = "/images/blog/recreation-18.jpeg";
+const recreation19 = "/images/blog/recreation-19.jpeg";
+const recreation20 = "/images/blog/recreation-20.jpeg";
 
 export const navLinks = [
   { to: "/", label: "Home" },
@@ -44,6 +44,7 @@ export type Program = {
   slug: string;
   title: string;
   category: string;
+  image: string;
   duration: string;
   format: string;
   certification: string;
@@ -61,6 +62,7 @@ export const programs: Program[] = [
     slug: "business-administration",
     title: "Business Administration",
     category: "Business & Leadership",
+    image: classroom,
     duration: "9 months",
     format: "Hybrid · Evenings",
     certification: "MIA Professional Diploma",
@@ -116,6 +118,7 @@ export const programs: Program[] = [
     slug: "data-analytics",
     title: "Data Analytics & AI",
     category: "Technology",
+    image: lab,
     duration: "6 months",
     format: "On-campus labs",
     certification: "MIA Certificate + Vendor Exam Prep",
@@ -175,6 +178,7 @@ export const programs: Program[] = [
     slug: "digital-marketing",
     title: "Digital Marketing",
     category: "Marketing & Media",
+    image: heroCampus,
     duration: "5 months",
     format: "Online live",
     certification: "MIA Certificate",
@@ -226,6 +230,7 @@ export const programs: Program[] = [
     slug: "project-management",
     title: "Project Management Professional Track",
     category: "Business & Leadership",
+    image: library,
     duration: "4 months",
     format: "Weekends",
     certification: "PMP® Exam Preparation",
@@ -256,7 +261,7 @@ export const programs: Program[] = [
     instructor: {
       name: "Eng. Hisham Nabil",
       title: "Senior Faculty, Project Delivery",
-      bio: "Delivered infrastructure and IT programmes across Egypt and the Gulf, with 12 years of PMP training experience.",
+      bio: "Delivered infrastructure and IT programmes across Egypt and the Gulf, with 12 years of PMP experience.",
       credentials: "PMP · PMI-ACP · PRINCE2 Practitioner",
     },
     tuition: [
@@ -269,6 +274,7 @@ export const programs: Program[] = [
     slug: "english-communication",
     title: "Professional English & Business Communication",
     category: "Languages",
+    image: classroom,
     duration: "3 months",
     format: "On-campus / Online",
     certification: "MIA Proficiency Certificate",
@@ -312,6 +318,7 @@ export const programs: Program[] = [
     slug: "hr-management",
     title: "Human Resources Management Diploma",
     category: "Business & Leadership",
+    image: lab,
     duration: "7 months",
     format: "Hybrid",
     certification: "MIA Professional Diploma",
@@ -353,70 +360,6 @@ export const programs: Program[] = [
   },
 ];
 
-export const departments = [
-  {
-    slug: "faculty-journalism-media",
-    name: "Journalism & Media",
-    description:
-      "Reporting, broadcasting, digital media and communications across print, radio and screen.",
-    programs: 8,
-  },
-  {
-    slug: "faculty-business-administration",
-    name: "Business Administration",
-    description: "Management, finance, marketing, entrepreneurship and executive education tracks.",
-    programs: 14,
-  },
-  {
-    slug: "faculty-information-systems",
-    name: "Information Systems",
-    description:
-      "Programming and software taught in fully equipped computer labs, preparing graduates for web and app development or IT roles at leading Egyptian institutions.",
-    programs: 11,
-  },
-  {
-    slug: "faculty-nursing",
-    name: "Nursing",
-    description: "Clinical practice, patient care, community health and hospital-based training.",
-    programs: 7,
-  },
-  {
-    slug: "faculty-languages-translation",
-    name: "Languages & Translation",
-    description:
-      "Arabic, English, French and professional translation for academic and business contexts.",
-    programs: 9,
-  },
-  {
-    slug: "faculty-surveying-mapping",
-    name: "Surveying & Mapping",
-    description:
-      "General land surveying for agriculture, road planning and real estate development, trained intensively by engineers from Egypt's leading contracting firms.",
-    programs: 5,
-  },
-  {
-    slug: "faculty-petroleum-technology",
-    name: "Petroleum Technology",
-    description:
-      "Upstream operations, drilling, reservoir engineering and energy sector certifications.",
-    programs: 6,
-  },
-  {
-    slug: "faculty-medical-analysis",
-    name: "Medical Analysis",
-    description:
-      "Clinical laboratory science, diagnostics, haematology and medical laboratory practice.",
-    programs: 5,
-  },
-  {
-    slug: "faculty-tourism-hotels",
-    name: "Tourism & Hotels",
-    description:
-      "Hospitality operations, travel management, food and beverage and hotel administration.",
-    programs: 7,
-  },
-];
-
 export type Faculty = {
   slug: string;
   name: string;
@@ -426,56 +369,46 @@ export type Faculty = {
   featuredPrograms: Program[];
 };
 
-const facultyProgramMap: Record<string, string[]> = {
-  "faculty-journalism-media": ["digital-marketing"],
-  "faculty-business-administration": [
-    "business-administration",
-    "project-management",
-    "hr-management",
-  ],
-  "faculty-information-systems": ["data-analytics"],
-  "faculty-nursing": ["business-administration"],
-  "faculty-languages-translation": ["english-communication"],
-  "faculty-surveying-mapping": ["business-administration"],
-  "faculty-petroleum-technology": ["project-management"],
-  "faculty-medical-analysis": ["business-administration"],
-  "faculty-tourism-hotels": ["digital-marketing"],
+function slugifyCategory(category: string): string {
+  return `faculty-${category
+    .toLowerCase()
+    .replace(/&/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")}`;
+}
+
+const categoryDescriptions: Record<string, string> = {
+  "Business & Leadership":
+    "Management, finance, project delivery and people leadership tracks built around real operating decisions.",
+  Technology: "Data, analytics and applied AI, taught hands-on in fully equipped computer labs.",
+  "Marketing & Media":
+    "Full-funnel digital marketing, from channel strategy to campaign measurement.",
+  Languages: "Professional English and business communication for international workplaces.",
 };
 
-const facultyImages: Record<string, string> = {
-  "faculty-journalism-media": library,
-  "faculty-business-administration": classroom,
-  "faculty-information-systems": lab,
-  "faculty-nursing": heroCampus,
-  "faculty-languages-translation": classroom,
-  "faculty-surveying-mapping": lab,
-  "faculty-petroleum-technology": heroCampus,
-  "faculty-medical-analysis": library,
-  "faculty-tourism-hotels": classroom,
+const categoryImages: Record<string, string> = {
+  "Business & Leadership": classroom,
+  Technology: lab,
+  "Marketing & Media": heroCampus,
+  Languages: library,
 };
 
-const facultyGalleryMap: Record<string, string[]> = {
-  "faculty-nursing": [heroCampus, classroom, lab, library],
-};
-
-export const faculties: Faculty[] = departments.map((department) => ({
-  slug: department.slug,
-  name: department.name,
-  description: department.description,
-  image: facultyImages[department.slug] ?? heroCampus,
-  gallery: (
-    facultyGalleryMap[department.slug] ?? [
-      facultyImages[department.slug] ?? heroCampus,
-      classroom,
-      lab,
-      library,
-      heroCampus,
-    ]
-  ).filter((value, index, array) => array.indexOf(value) === index),
-  featuredPrograms: programs.filter((program) =>
-    (facultyProgramMap[department.slug] ?? []).includes(program.slug),
-  ),
-}));
+export const faculties: Faculty[] = Array.from(new Set(programs.map((p) => p.category))).map(
+  (category) => {
+    const featuredPrograms = programs.filter((program) => program.category === category);
+    const image = categoryImages[category] ?? heroCampus;
+    return {
+      slug: slugifyCategory(category),
+      name: category,
+      description: categoryDescriptions[category] ?? featuredPrograms[0]?.excerpt ?? "",
+      image,
+      gallery: [image, classroom, lab, library, heroCampus].filter(
+        (value, index, array) => array.indexOf(value) === index,
+      ),
+      featuredPrograms,
+    };
+  },
+);
 
 export const staff = [
   {
@@ -780,6 +713,6 @@ export const partners = [
   "Cairo Governorate Graduate Employment Authority",
   "Ministry of Industry and Trade",
   "Professional Academy for Teachers – Ministry of Education",
-  "National Council for Education and Training – Cabinet of Ministers",
+  "National Council for Education and – Cabinet of Ministers",
   "Leading Egyptian public universities",
 ];

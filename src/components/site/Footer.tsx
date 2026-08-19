@@ -1,8 +1,7 @@
-import { Link } from "@tanstack/react-router";
-import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Youtube } from "lucide-react";
-import { toast } from "sonner";
-import miaLogo from "@/assets/mia-logo.webp";
-import { Button } from "@/components/ui/button";
+"use client";
+
+import Link from "next/link";
+import { Clock, Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Youtube } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
 
 export function Footer() {
@@ -17,8 +16,8 @@ export function Footer() {
           <div className="flex items-center gap-3">
             <span className="grid h-14 w-14 shrink-0 place-items-center rounded-xl bg-primary-foreground/95 p-1.5">
               <img
-                src={miaLogo}
-                alt="MIA Training Academy logo"
+                src="/images/mia-logo.webp"
+                alt="MIA Academy logo"
                 width={48}
                 height={48}
                 loading="lazy"
@@ -26,9 +25,9 @@ export function Footer() {
               />
             </span>
             <span className="min-w-0 text-sm font-semibold">
-              MIA Training Academy
+              MIA Academy
               <span className="block text-xs font-normal text-primary-foreground/70">
-                Maadi International Academy
+                {t.footer.academyFullName}
               </span>
             </span>
           </div>
@@ -61,7 +60,7 @@ export function Footer() {
           <ul className="mt-5 space-y-3 text-sm text-primary-foreground/80">
             {quickLinks.map((link) => (
               <li key={link.label}>
-                <Link to={link.to as never} className="transition-colors hover:text-accent">
+                <Link href={link.to} className="transition-colors hover:text-accent">
                   {link.label}
                 </Link>
               </li>
@@ -76,13 +75,19 @@ export function Footer() {
           <ul className="mt-5 space-y-3 text-sm text-primary-foreground/80">
             {resources.map((link) => (
               <li key={link.label}>
-                <Link to={link.to as never} className="transition-colors hover:text-accent">
+                <Link href={link.to} className="transition-colors hover:text-accent">
                   {link.label}
                 </Link>
               </li>
             ))}
           </ul>
-          <ul className="mt-6 space-y-3 text-sm text-primary-foreground/80">
+        </div>
+
+        <div>
+          <h3 className="text-sm font-semibold tracking-[0.16em] uppercase">
+            {t.footer.contactHeading}
+          </h3>
+          <ul className="mt-5 space-y-3 text-sm text-primary-foreground/80">
             <li className="flex gap-2">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
               <a
@@ -109,55 +114,21 @@ export function Footer() {
                 admissions@mia-academy.edu
               </a>
             </li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 className="text-sm font-semibold tracking-[0.16em] uppercase">
-            {t.footer.newsletterHeading}
-          </h3>
-          <p className="mt-5 text-sm text-primary-foreground/75">{t.footer.newsletterBody}</p>
-          <form
-            className="mt-5 space-y-3"
-            onSubmit={(e) => {
-              e.preventDefault();
-              toast.success("You're subscribed", {
-                description: "Look out for the next MIA briefing in your inbox.",
-              });
-              (e.target as HTMLFormElement).reset();
-            }}
-          >
-            <label htmlFor="footer-email" className="sr-only">
-              Email address
-            </label>
-            <input
-              id="footer-email"
-              type="email"
-              required
-              placeholder={t.footer.emailPlaceholder}
-              className="h-11 w-full rounded-lg border border-primary-foreground/25 bg-primary-foreground/10 px-4 text-sm text-primary-foreground outline-none placeholder:text-primary-foreground/55 focus-visible:ring-2 focus-visible:ring-accent"
-            />
-            <Button type="submit" variant="hero" className="w-full">
-              {t.footer.subscribe}
-            </Button>
-          </form>
-          <div className="mt-6 flex flex-wrap gap-2">
-            {["Accredited", "ISO 9001", "PMI Partner"].map((badge) => (
-              <span
-                key={badge}
-                className="rounded-full border border-accent/40 bg-accent/10 px-3 py-1 text-xs font-medium text-accent"
-              >
-                {badge}
+            <li className="flex gap-2">
+              <Clock className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+              <span>
+                {t.officeHours.weekdays}
+                <span className="block">{t.officeHours.saturday}</span>
               </span>
-            ))}
-          </div>
+            </li>
+          </ul>
         </div>
       </div>
 
       <div className="border-t border-primary-foreground/15">
         <div className="container-page flex flex-col gap-3 py-6 text-xs text-primary-foreground/65 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {new Date().getFullYear()} MIA Training Academy. {t.footer.rights}
+            © {new Date().getFullYear()} MIA Academy. {t.footer.rights}
           </p>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import Link from "next/link";
 import type { ReactNode } from "react";
 
 export function PageHero({
@@ -32,7 +32,7 @@ export function PageHero({
               {breadcrumb.map((crumb, i) => (
                 <li key={crumb.label} className="flex items-center gap-2">
                   {crumb.to ? (
-                    <Link to={crumb.to} className="transition-colors hover:text-accent">
+                    <Link href={crumb.to} className="transition-colors hover:text-accent">
                       {crumb.label}
                     </Link>
                   ) : (
