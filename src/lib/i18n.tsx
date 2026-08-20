@@ -278,6 +278,8 @@ type Dictionary = {
     eyebrow: string;
     title: string;
     description: string;
+    allActivitiesEyebrow: string;
+    allActivitiesTitle: string;
     allCategory: string;
     loadMore: string;
     newsletterTitle: string;
@@ -302,7 +304,7 @@ const en: Dictionary = {
     contact: "Contact",
     staff: "Faculty & Staff",
     applyNow: "Apply Now",
-    subtitle: "Maadi International",
+    subtitle: "Maadi International Academy",
     switchLanguage: "Switch language",
     openMenu: "Open menu",
     closeMenu: "Close menu",
@@ -757,6 +759,8 @@ const en: Dictionary = {
     eyebrow: "Insights",
     title: "Writing from the MIA community",
     description: "Practical guidance from our faculty, career team and students.",
+    allActivitiesEyebrow: "Browse",
+    allActivitiesTitle: "All Activities",
     allCategory: "All",
     loadMore: "Load more articles",
     newsletterTitle: "Weekly insights, no noise",
@@ -1230,6 +1234,8 @@ const ar: Dictionary = {
     eyebrow: "رؤى",
     title: "كتابات من مجتمع MIA",
     description: "إرشادات عملية من أعضاء هيئة التدريس وفريق التوظيف والطلاب لدينا.",
+    allActivitiesEyebrow: "تصفح",
+    allActivitiesTitle: "كل الفعاليات",
     allCategory: "الكل",
     loadMore: "تحميل المزيد من المقالات",
     newsletterTitle: "رؤى أسبوعية، بلا ضوضاء",

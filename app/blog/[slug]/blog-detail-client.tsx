@@ -131,9 +131,6 @@ export function BlogDetailClient({ post: rawPost }: { post: Post }) {
                   <Clock className="h-4 w-4 shrink-0" /> {post.read}
                 </p>
               </div>
-              <Button asChild variant="hero" size="lg" className="mt-7 w-full">
-                <Link href="/blog">{t.blogDetail.backToAllBlogs}</Link>
-              </Button>
             </aside>
           </Reveal>
         </div>

@@ -1,7 +1,3 @@
-const classroom = "/images/classroom.jpg";
-const heroCampus = "/images/hero-campus.jpg";
-const lab = "/images/lab.jpg";
-const library = "/images/library.jpg";
 const graduationHero = "/images/blog/graduation-hero.jpeg";
 const graduation1 = "/images/blog/graduation-1.jpeg";
 const graduation2 = "/images/blog/graduation-2.jpeg";
@@ -9,27 +5,6 @@ const graduation3 = "/images/blog/graduation-3.jpeg";
 const graduation4 = "/images/blog/graduation-4.jpeg";
 const graduation5 = "/images/blog/graduation-5.jpeg";
 const graduation6 = "/images/blog/graduation-6.jpeg";
-const recreationHero = "/images/blog/recreation-hero.jpeg";
-const recreation1 = "/images/blog/recreation-1.jpeg";
-const recreation2 = "/images/blog/recreation-2.jpeg";
-const recreation3 = "/images/blog/recreation-3.jpeg";
-const recreation4 = "/images/blog/recreation-4.jpeg";
-const recreation5 = "/images/blog/recreation-5.jpeg";
-const recreation6 = "/images/blog/recreation-6.jpeg";
-const recreation7 = "/images/blog/recreation-7.jpeg";
-const recreation8 = "/images/blog/recreation-8.jpeg";
-const recreation9 = "/images/blog/recreation-9.jpeg";
-const recreation10 = "/images/blog/recreation-10.jpeg";
-const recreation11 = "/images/blog/recreation-11.jpeg";
-const recreation12 = "/images/blog/recreation-12.jpeg";
-const recreation13 = "/images/blog/recreation-13.jpeg";
-const recreation14 = "/images/blog/recreation-14.jpeg";
-const recreation15 = "/images/blog/recreation-15.jpeg";
-const recreation16 = "/images/blog/recreation-16.jpeg";
-const recreation17 = "/images/blog/recreation-17.jpeg";
-const recreation18 = "/images/blog/recreation-18.jpeg";
-const recreation19 = "/images/blog/recreation-19.jpeg";
-const recreation20 = "/images/blog/recreation-20.jpeg";
 
 export const navLinks = [
   { to: "/", label: "Home" },
@@ -336,93 +311,6 @@ export const posts: Post[] = [
       graduation5,
       graduation6,
     ],
-  },
-  {
-    slug: "choosing-the-right-diploma",
-    title: "How to choose the right professional diploma in 2026",
-    category: "Career Advice",
-    excerpt:
-      "Five questions that separate a credential that changes your career from one that just decorates your CV.",
-    author: "Dina Roshdy",
-    date: "2 August 2026",
-    read: "6 min read",
-    image: classroom,
-    gallery: [classroom, library, lab],
-  },
-  {
-    slug: "student-life-and-recreation",
-    title: "Beyond the classroom: the recreational side of MIA",
-    category: "Campus News",
-    excerpt:
-      "From Pyramid and Alexandria excursions to Ain Sokhna getaways, Eid gifts and an annual football cup — how MIA keeps student life balanced.",
-    content: [
-      "Over the years, the academy's administration has never overlooked the recreational side of student life. Alongside its focus on theoretical and practical study, MIA recognises that recreation plays an important role in our students' wellbeing.",
-      "The academy has organised numerous recreational and cultural trips, including visits to major historical sites such as the Pyramids, several landmarks in Alexandria, and sites around Fayoum.",
-      "MIA has also organised trips to Ain Sokhna in Suez, and other destinations that give students a chance to unwind.",
-      "The academy also marks holidays and special occasions — distributing Eid gifts to students, and handing out sweets during exam periods to lift students' spirits and ease exam-related stress.",
-      "MIA also organises an annual football tournament, where teams formed from different departments compete for the Academy Cup, alongside valuable cash prizes for the winning teams.",
-    ],
-    author: "MIA Editorial",
-    date: "24 July 2026",
-    read: "4 min read",
-    image: recreationHero,
-    gallery: [
-      recreationHero,
-      recreation1,
-      recreation2,
-      recreation3,
-      recreation4,
-      recreation5,
-      recreation6,
-      recreation7,
-      recreation8,
-      recreation9,
-      recreation10,
-      recreation11,
-      recreation12,
-      recreation13,
-      recreation14,
-      recreation15,
-      recreation16,
-      recreation17,
-      recreation18,
-      recreation19,
-      recreation20,
-    ],
-  },
-  {
-    slug: "skills-employers-want",
-    title: "The skills regional employers are actually hiring for",
-    category: "Industry Insights",
-    excerpt:
-      "We analysed 1,200 job posts across Cairo and the Gulf. Here is what changed this year.",
-    author: "Dr. Yasmine El-Sharkawy",
-    date: "11 July 2026",
-    read: "8 min read",
-    image: library,
-    gallery: [library, classroom, heroCampus],
-  },
-  {
-    slug: "balancing-work-and-study",
-    title: "Balancing a full-time job with evening study",
-    category: "Student Life",
-    excerpt: "Habits from graduates who completed a diploma without pausing their career.",
-    author: "Nour Abdelrahman",
-    date: "28 June 2026",
-    read: "5 min read",
-    image: heroCampus,
-    gallery: [heroCampus, library, lab],
-  },
-  {
-    slug: "portfolio-that-converts",
-    title: "Building a portfolio that converts interviews into offers",
-    category: "Career Advice",
-    excerpt: "What hiring managers look for in the first ninety seconds of a portfolio review.",
-    author: "Dina Roshdy",
-    date: "14 June 2026",
-    read: "7 min read",
-    image: classroom,
-    gallery: [classroom, heroCampus, library],
   },
 ];
 

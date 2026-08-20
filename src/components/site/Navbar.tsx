@@ -63,7 +63,7 @@ export function Navbar() {
               </span>
               <span
                 className={cn(
-                  "block truncate text-[11px] tracking-[0.16em] uppercase",
+                  "block truncate text-[9px] tracking-[0.14em] uppercase",
                   scrolled ? "text-muted-foreground" : "text-primary-foreground/70",
                 )}
               >

@@ -6,19 +6,19 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
-import { Section } from "@/components/site/Section";
+import { Section, SectionHeading } from "@/components/site/Section";
 import { posts } from "@/data/site";
 import { useLanguage } from "@/lib/i18n";
 import { localizeCategory, localizePost } from "@/lib/content-i18n";
 
-const categories = ["All", "Career Advice", "Campus News", "Industry Insights", "Student Life"];
+const categories = ["All", "Campus News"];
 
 export function BlogClient() {
   const { t, language } = useLanguage();
   const [category, setCategory] = useState("All");
   const [visibleCount, setVisibleCount] = useState(3);
   const featured = localizePost(posts[0]!, language);
-  const rest = posts.slice(1).map((p) => localizePost(p, language));
+  const rest = posts.map((p) => localizePost(p, language));
   const filtered = category === "All" ? rest : rest.filter((p) => p.category === category);
   const visible = filtered.slice(0, visibleCount);
 
@@ -75,7 +75,13 @@ export function BlogClient() {
       </Section>
 
       <Section muted className="pt-0 pb-24">
-        <Reveal className="flex flex-wrap gap-2 pt-20">
+        <div>
+          <SectionHeading
+            eyebrow={t.blogPage.allActivitiesEyebrow}
+            title={t.blogPage.allActivitiesTitle}
+          />
+        </div>
+        <Reveal className="mt-8 flex flex-wrap gap-2">
           {categories.map((item) => (
             <Button
               key={item}
