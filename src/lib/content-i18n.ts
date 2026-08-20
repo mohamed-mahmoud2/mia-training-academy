@@ -97,9 +97,8 @@ const partnerAr: Record<string, string> = {
   "Ministry of Industry and Trade": "وزارة الصناعة والتجارة",
   "Professional Academy for Teachers – Ministry of Education":
     "الأكاديمية المهنية للمعلمين - وزارة التربية والتعليم",
-  "National Council for Education and – Cabinet of Ministers":
+  "National Council for Education and Training – Cabinet of Ministers":
     "المجلس الوطني للتعليم والتدريب - مجلس الوزراء",
-  "Leading Egyptian public universities": "كبرى الجامعات المصرية الحكومية",
 };
 
 const testimonialAr: Record<string, TestimonialText> = {

@@ -108,7 +108,10 @@ export function AboutClient() {
           eyebrow={t.about.accreditationsEyebrow}
           title={t.about.accreditationsTitle}
         />
-        <div className="relative mt-8 mb-2 overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_10%,black_90%,transparent)]">
+        <div
+          className="relative mt-8 mb-2 overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_10%,black_90%,transparent)]"
+          dir="ltr"
+        >
           <ul className="marquee-track flex w-max gap-4 pb-5">
             {[...partners, ...partners].map((partner, i) => (
               <li

@@ -713,6 +713,5 @@ export const partners = [
   "Cairo Governorate Graduate Employment Authority",
   "Ministry of Industry and Trade",
   "Professional Academy for Teachers – Ministry of Education",
-  "National Council for Education and – Cabinet of Ministers",
-  "Leading Egyptian public universities",
+  "National Council for Education and Training – Cabinet of Ministers",
 ];
