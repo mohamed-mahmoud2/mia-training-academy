@@ -81,7 +81,7 @@ export function ContactClient() {
                   placeholder={t.contactPage.selectFaculty}
                   helperText={t.contactPage.facultyHelper}
                   options={faculties.map((f) => ({
-                    value: f.name,
+                    value: f.slug,
                     label: localizeFaculty(f, language).name,
                     icon: BookOpen,
                   }))}

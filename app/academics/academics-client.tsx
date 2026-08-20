@@ -10,7 +10,7 @@ import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { Section, SectionHeading } from "@/components/site/Section";
 import { faculties } from "@/data/site";
-import { FacultyCard } from "@/components/site/FacultyCard";
+import { ProgramCard } from "@/components/site/ProgramCard";
 import { useLanguage } from "@/lib/i18n";
 
 const classroom = "/images/classroom.jpg";
@@ -73,7 +73,7 @@ export function AcademicsClient() {
         <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {faculties.map((faculty, i) => (
             <Reveal key={faculty.slug} delay={i * 70}>
-              <FacultyCard faculty={faculty} />
+              <ProgramCard program={faculty} />
             </Reveal>
           ))}
         </div>

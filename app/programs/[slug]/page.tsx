@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { faculties, programs } from "@/data/site";
+import { faculties } from "@/data/site";
 import { ProgramDetailClient } from "./program-detail-client";
 
 export function generateStaticParams() {
-  return [...faculties.map((f) => ({ slug: f.slug })), ...programs.map((p) => ({ slug: p.slug }))];
+  return faculties.map((f) => ({ slug: f.slug }));
 }
 
 export async function generateMetadata({
@@ -14,27 +14,19 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const faculty = faculties.find((item) => item.slug === slug);
-  const program = programs.find((p) => p.slug === slug);
 
   if (faculty) {
     return {
-      title: `${faculty.name} | MIA Academy`,
-      description: faculty.description,
+      title: `${faculty.name.en} | MIA Academy`,
+      description: faculty.description.en,
       openGraph: {
-        title: `${faculty.name} | MIA Academy`,
-        description: faculty.description,
+        title: `${faculty.name.en} | MIA Academy`,
+        description: faculty.description.en,
       },
     };
   }
-  if (program) {
-    return {
-      title: `${program.title} | MIA Academy`,
-      description: program.excerpt,
-      openGraph: { title: `${program.title} | MIA Academy`, description: program.excerpt },
-    };
-  }
   return {
-    title: "Faculty / programme not found | MIA",
+    title: "Faculty not found | MIA",
     robots: { index: false },
   };
 }
@@ -42,8 +34,7 @@ export async function generateMetadata({
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const faculty = faculties.find((item) => item.slug === slug);
-  const program = programs.find((p) => p.slug === slug);
-  if (!faculty && !program) notFound();
+  if (!faculty) notFound();
 
-  return <ProgramDetailClient faculty={faculty} program={program} />;
+  return <ProgramDetailClient faculty={faculty} />;
 }

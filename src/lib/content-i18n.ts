@@ -18,15 +18,6 @@ type ProgramText = {
   tuition: { label: string; note: string }[];
 };
 
-const categoryDescriptionAr: Record<string, string> = {
-  "Business & Leadership":
-    "مسارات الإدارة والتمويل وتنفيذ المشاريع وقيادة الأفراد، مبنية حول قرارات تشغيلية حقيقية.",
-  Technology:
-    "البيانات والتحليلات والذكاء الاصطناعي التطبيقي، بتدريب عملي في معامل حاسوب مجهزة بالكامل.",
-  "Marketing & Media": "تسويق رقمي متكامل، من استراتيجية القنوات إلى قياس الحملات.",
-  Languages: "اللغة الإنجليزية المهنية والتواصل في بيئات العمل الدولية.",
-};
-
 const postAr: Record<string, PostText> = {
   "choosing-the-right-diploma": {
     title: "كيف تختار الدبلوم المهني المناسب في 2026",
@@ -86,10 +77,6 @@ const categoryAr: Record<string, string> = {
   Professors: "أعضاء هيئة التدريس",
   "Industry Mentors": "مرشدون من قطاع الصناعة",
   "Guest Lecturers": "محاضرون ضيوف",
-  "Business & Leadership": "الأعمال والقيادة",
-  Technology: "التكنولوجيا",
-  "Marketing & Media": "التسويق والإعلام",
-  Languages: "اللغات",
 };
 
 const partnerAr: Record<string, string> = {
@@ -526,15 +513,14 @@ export function localizeProgram<T extends Program>(program: T, language: Languag
   };
 }
 
-export function localizeFaculty<T extends Pick<Faculty, "slug" | "name" | "description">>(
-  faculty: T,
+export function localizeFaculty(
+  faculty: Pick<Faculty, "slug" | "name" | "description">,
   language: Language,
-): T {
-  if (language !== "ar") return faculty;
+): { slug: string; name: string; description: string } {
   return {
-    ...faculty,
-    name: categoryAr[faculty.name] ?? faculty.name,
-    description: categoryDescriptionAr[faculty.name] ?? faculty.description,
+    slug: faculty.slug,
+    name: faculty.name[language],
+    description: faculty.description[language],
   };
 }
 

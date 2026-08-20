@@ -53,7 +53,9 @@ export function PageHero({
           {title}
         </h1>
         {description && (
-          <p className="mt-5 max-w-2xl text-lg text-primary-foreground/85">{description}</p>
+          <p className="mt-5 line-clamp-2 max-w-2xl text-lg text-primary-foreground/85">
+            {description}
+          </p>
         )}
         {children && <div className="mt-8">{children}</div>}
       </div>

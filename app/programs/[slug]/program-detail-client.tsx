@@ -1,58 +1,32 @@
 "use client";
 
 import Link from "next/link";
-import {
-  ArrowLeft,
-  ArrowRight,
-  Award,
-  CalendarDays,
-  CheckCircle2,
-  Clock,
-  MonitorPlay,
-} from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
 import { PageHero } from "@/components/site/PageHero";
 import { ProgramCard } from "@/components/site/ProgramCard";
 import { Reveal } from "@/components/site/Reveal";
 import { Section, SectionHeading } from "@/components/site/Section";
 import { CtaBanner } from "@/components/site/CtaBanner";
-import { faculties, programs, type Faculty, type Program } from "@/data/site";
+import { faculties, type Faculty } from "@/data/site";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useLanguage } from "@/lib/i18n";
-import { localizeCategory, localizeFaculty, localizeProgram } from "@/lib/content-i18n";
+import { localizeFaculty, localizeProgram } from "@/lib/content-i18n";
 
-export function ProgramDetailClient({
-  faculty: rawFaculty,
-  program,
-}: {
-  faculty?: Faculty | undefined;
-  program?: Program | undefined;
-}) {
-  if (rawFaculty) {
-    return <FacultyDetail rawFaculty={rawFaculty} />;
-  }
-
-  return <ProgramDetail program={program!} />;
+export function ProgramDetailClient({ faculty: rawFaculty }: { faculty: Faculty }) {
+  return <FacultyDetail rawFaculty={rawFaculty} />;
 }
 
 function FacultyDetail({ rawFaculty }: { rawFaculty: Faculty }) {
   const { t, language } = useLanguage();
   const faculty = localizeFaculty(rawFaculty, language);
-  const related =
-    rawFaculty.featuredPrograms.length > 0 ? rawFaculty.featuredPrograms : programs.slice(0, 3);
+  const related = faculties.filter((f) => f.slug !== rawFaculty.slug).slice(0, 3);
   const [carouselSlide, setCarouselSlide] = useState(0);
   const [dragStart, setDragStart] = useState<number | null>(null);
   const galleryRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
   const imagesPerSlide = isMobile ? 1 : 3;
-  const totalSlides = Math.ceil(faculty.gallery.length / imagesPerSlide);
+  const totalSlides = Math.ceil(rawFaculty.gallery.length / imagesPerSlide);
 
   const goToPrevious = () => setCarouselSlide((prev) => (prev === 0 ? totalSlides - 1 : prev - 1));
   const goToNext = () => setCarouselSlide((prev) => (prev + 1) % totalSlides);
@@ -89,7 +63,7 @@ function FacultyDetail({ rawFaculty }: { rawFaculty: Faculty }) {
   }, [dragStart, totalSlides]);
 
   const startIndex = carouselSlide * imagesPerSlide;
-  const visibleImages = faculty.gallery.slice(startIndex, startIndex + imagesPerSlide);
+  const visibleImages = rawFaculty.gallery.slice(startIndex, startIndex + imagesPerSlide);
 
   return (
     <>
@@ -115,7 +89,7 @@ function FacultyDetail({ rawFaculty }: { rawFaculty: Faculty }) {
           <Reveal>
             <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-soft">
               <img
-                src={faculty.image}
+                src={rawFaculty.image}
                 alt={faculty.name}
                 width={1200}
                 height={800}
@@ -146,8 +120,8 @@ function FacultyDetail({ rawFaculty }: { rawFaculty: Faculty }) {
                   <span className="block font-semibold text-foreground">
                     {t.facultyDetail.tracksLabel}
                   </span>
-                  {faculty.featuredPrograms.length > 0
-                    ? faculty.featuredPrograms
+                  {rawFaculty.featuredPrograms.length > 0
+                    ? rawFaculty.featuredPrograms
                         .map((item) => localizeProgram(item, language).title)
                         .join(" · ")
                     : t.facultyDetail.tracksFallback}
@@ -160,11 +134,11 @@ function FacultyDetail({ rawFaculty }: { rawFaculty: Faculty }) {
         <div className="mt-12 rounded-2xl border border-border bg-card p-8 shadow-soft">
           <h2 className="text-2xl font-semibold text-foreground">{t.facultyDetail.studyHeading}</h2>
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-            {t.facultyDetail.studyBody}
+            {faculty.description}
           </p>
-          <ul className="mt-6 space-y-4">
-            {faculty.featuredPrograms.length > 0 ? (
-              faculty.featuredPrograms.map((rawItem) => {
+          {rawFaculty.featuredPrograms.length > 0 && (
+            <ul className="mt-6 space-y-4">
+              {rawFaculty.featuredPrograms.map((rawItem) => {
                 const item = localizeProgram(rawItem, language);
                 return (
                   <li key={item.slug} className="flex items-start gap-3 text-sm text-foreground">
@@ -175,11 +149,9 @@ function FacultyDetail({ rawFaculty }: { rawFaculty: Faculty }) {
                     </span>
                   </li>
                 );
-              })
-            ) : (
-              <li className="text-sm text-muted-foreground">{t.facultyDetail.noProgrammes}</li>
-            )}
-          </ul>
+              })}
+            </ul>
+          )}
         </div>
       </Section>
 
@@ -204,7 +176,7 @@ function FacultyDetail({ rawFaculty }: { rawFaculty: Faculty }) {
                     height={300}
                     draggable={false}
                     onDragStart={(e) => e.preventDefault()}
-                    className="h-[200px] w-full object-cover pointer-events-none"
+                    className="h-85 w-full object-cover pointer-events-none"
                   />
                 </div>
               </Reveal>
@@ -265,186 +237,3 @@ function FacultyDetail({ rawFaculty }: { rawFaculty: Faculty }) {
   );
 }
 
-function ProgramDetail({ program: rawProgram }: { program: Program }) {
-  const { t, language } = useLanguage();
-  const program = localizeProgram(rawProgram, language);
-  const related = programs.filter((p) => p.slug !== rawProgram.slug).slice(0, 3);
-
-  const quickInfo = [
-    { icon: Clock, label: t.programDetail.duration, value: program.duration },
-    { icon: MonitorPlay, label: t.programDetail.format, value: program.format },
-    { icon: Award, label: t.programDetail.certification, value: program.certification },
-    { icon: CalendarDays, label: t.programDetail.nextIntake, value: program.nextIntake },
-  ];
-
-  return (
-    <>
-      <PageHero
-        eyebrow={localizeCategory(program.category, language)}
-        title={program.title}
-        description={program.excerpt}
-        breadcrumb={[
-          { label: t.nav.home, to: "/" },
-          { label: t.nav.programs, to: "/programs" },
-          { label: program.title },
-        ]}
-      >
-        {/* Apply online — disabled for now
-        <Button asChild variant="hero" size="xl">
-          <Link href="/admissions">{t.programDetail.enrollNow}</Link>
-        </Button>
-        */}
-      </PageHero>
-
-      <section className="relative z-10 -mt-14">
-        <div className="container-page">
-          <Reveal className="glass-panel grid gap-6 rounded-2xl p-7 sm:grid-cols-2 lg:grid-cols-4">
-            {quickInfo.map((info) => (
-              <div key={info.label} className="flex min-w-0 items-center gap-3">
-                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-primary-soft">
-                  <info.icon className="h-5 w-5 text-primary" />
-                </span>
-                <span className="min-w-0">
-                  <span className="block text-xs tracking-wide text-muted-foreground uppercase">
-                    {info.label}
-                  </span>
-                  <span className="block truncate font-semibold text-foreground">{info.value}</span>
-                </span>
-              </div>
-            ))}
-          </Reveal>
-        </div>
-      </section>
-
-      <Section>
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr]">
-          <div>
-            <Reveal>
-              <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
-                {t.programDetail.overviewHeading}
-              </h2>
-              <p className="mt-4 leading-relaxed text-muted-foreground">
-                {t.programDetail.overviewBody}
-              </p>
-              <ul className="mt-8 space-y-4">
-                {program.objectives.map((objective) => (
-                  <li key={objective} className="flex gap-3 text-foreground">
-                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-accent-foreground" />
-                    <span className="text-sm leading-relaxed">{objective}</span>
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
-
-            <Reveal className="mt-14">
-              <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
-                {t.programDetail.curriculumHeading}
-              </h2>
-              <Accordion type="single" collapsible className="mt-6" defaultValue="item-0">
-                {program.curriculum.map((module, i) => (
-                  <AccordionItem key={module.term} value={`item-${i}`}>
-                    <AccordionTrigger className="text-left text-base font-semibold">
-                      {module.term}
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <ul className="space-y-2 text-sm text-muted-foreground">
-                        {module.items.map((item) => (
-                          <li key={item} className="flex gap-2">
-                            <span aria-hidden className="text-accent-foreground">
-                              •
-                            </span>
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </Reveal>
-          </div>
-
-          <div className="space-y-8">
-            <Reveal>
-              <aside className="rounded-2xl border border-border bg-card p-7 shadow-soft">
-                <h2 className="text-sm font-semibold tracking-[0.18em] text-muted-foreground uppercase">
-                  {t.programDetail.programmeLeadHeading}
-                </h2>
-                <div className="mt-5 flex items-center gap-4">
-                  <span className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground">
-                    {program.instructor.name
-                      .split(" ")
-                      .slice(-2)
-                      .map((n) => n[0])
-                      .join("")}
-                  </span>
-                  <span className="min-w-0">
-                    <span className="block font-semibold text-foreground">
-                      {program.instructor.name}
-                    </span>
-                    <span className="block text-sm text-muted-foreground">
-                      {program.instructor.title}
-                    </span>
-                  </span>
-                </div>
-                <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
-                  {program.instructor.bio}
-                </p>
-                <p className="mt-4 rounded-lg bg-accent-soft px-4 py-3 text-xs font-medium text-accent-foreground">
-                  {program.instructor.credentials}
-                </p>
-              </aside>
-            </Reveal>
-
-            <Reveal delay={100}>
-              <aside className="rounded-2xl border border-border bg-card p-7 shadow-soft">
-                <h2 className="text-sm font-semibold tracking-[0.18em] text-muted-foreground uppercase">
-                  {t.programDetail.tuitionHeading}
-                </h2>
-                <table className="mt-5 w-full text-sm">
-                  <caption className="sr-only">Tuition options for {program.title}</caption>
-                  <tbody className="divide-y divide-border">
-                    {program.tuition.map((row) => (
-                      <tr key={row.label}>
-                        <th scope="row" className="py-3 pr-4 text-left font-medium text-foreground">
-                          {row.label}
-                          <span className="block text-xs font-normal text-muted-foreground">
-                            {row.note}
-                          </span>
-                        </th>
-                        <td className="py-3 text-right font-semibold whitespace-nowrap text-primary">
-                          {row.amount}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-                {/* Apply online — disabled for now
-                <Button asChild variant="hero" className="mt-6 w-full">
-                  <Link href="/admissions">{t.programDetail.startApplication}</Link>
-                </Button>
-                */}
-              </aside>
-            </Reveal>
-          </div>
-        </div>
-      </Section>
-
-      <Section muted>
-        <SectionHeading
-          eyebrow={t.programDetail.relatedEyebrow}
-          title={t.programDetail.relatedTitle}
-        />
-        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {related.map((item, i) => (
-            <Reveal key={item.slug} delay={i * 70}>
-              <ProgramCard program={item} />
-            </Reveal>
-          ))}
-        </div>
-      </Section>
-
-      <CtaBanner title={t.programDetail.ctaTitle(program.nextIntake)} />
-    </>
-  );
-}

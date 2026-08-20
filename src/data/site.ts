@@ -57,358 +57,144 @@ export type Program = {
   tuition: { label: string; amount: string; note: string }[];
 };
 
-export const programs: Program[] = [
-  {
-    slug: "business-administration",
-    title: "Business Administration",
-    category: "Business & Leadership",
-    image: classroom,
-    duration: "9 months",
-    format: "Hybrid · Evenings",
-    certification: "MIA Professional Diploma",
-    nextIntake: "12 October 2026",
-    tags: ["Leadership", "Strategy", "Finance"],
-    excerpt:
-      "Build the managerial toolkit to lead teams, read financial statements and drive growth in fast-moving organisations.",
-    objectives: [
-      "Translate corporate strategy into measurable operating plans",
-      "Interpret financial statements and build defensible budgets",
-      "Lead cross-functional teams through structured change",
-      "Apply data-driven decision frameworks to real business cases",
-    ],
-    curriculum: [
-      {
-        term: "Module 1 — Foundations",
-        items: [
-          "Principles of modern management",
-          "Business economics and market structure",
-          "Financial accounting essentials",
-        ],
-      },
-      {
-        term: "Module 2 — Applied Practice",
-        items: [
-          "Marketing strategy and customer analytics",
-          "Operations and supply chain design",
-          "Corporate finance and valuation",
-        ],
-      },
-      {
-        term: "Module 3 — Capstone",
-        items: [
-          "Leadership and organisational behaviour",
-          "Live consulting capstone with a partner firm",
-          "Executive presentation and career mentorship",
-        ],
-      },
-    ],
-    instructor: {
-      name: "Dr. Yasmine El-Sharkawy",
-      title: "Chair, Business & Leadership",
-      bio: "Former regional strategy director with 18 years advising multinationals across MENA, now leading MIA's executive education portfolio.",
-      credentials: "PhD Management, INSEAD · CFA Charterholder",
-    },
-    tuition: [
-      { label: "Full programme", amount: "EGP 74,000", note: "5% discount on upfront payment" },
-      { label: "Instalment plan", amount: "3 × EGP 26,000", note: "Interest-free, per module" },
-      { label: "Merit scholarship", amount: "Up to 40% off", note: "Based on portfolio review" },
-    ],
-  },
-  {
-    slug: "data-analytics",
-    title: "Data Analytics & AI",
-    category: "Technology",
-    image: lab,
-    duration: "6 months",
-    format: "On-campus labs",
-    certification: "MIA Certificate + Vendor Exam Prep",
-    nextIntake: "5 September 2026",
-    tags: ["Python", "SQL", "Machine Learning"],
-    excerpt:
-      "From spreadsheets to production models — a hands-on route into analytics roles, built around real datasets.",
-    objectives: [
-      "Model, query and clean data at scale with SQL and Python",
-      "Design dashboards that decision-makers actually use",
-      "Train, evaluate and deploy supervised learning models",
-      "Communicate analytical findings to non-technical stakeholders",
-    ],
-    curriculum: [
-      {
-        term: "Module 1 — Data Fundamentals",
-        items: [
-          "Relational modelling and advanced SQL",
-          "Python for data wrangling",
-          "Statistics for analysts",
-        ],
-      },
-      {
-        term: "Module 2 — Insight & Visualisation",
-        items: [
-          "Dashboard design principles",
-          "Business intelligence tooling",
-          "Experimentation and A/B testing",
-        ],
-      },
-      {
-        term: "Module 3 — Machine Learning",
-        items: [
-          "Supervised learning workflows",
-          "Model evaluation and fairness",
-          "Capstone: end-to-end ML product",
-        ],
-      },
-    ],
-    instructor: {
-      name: "Eng. Karim Fahmy",
-      title: "Lead Instructor, Data & AI",
-      bio: "Machine learning engineer who has shipped recommendation and forecasting systems for regional e-commerce leaders.",
-      credentials: "MSc Computer Science · Google Cloud Professional ML Engineer",
-    },
-    tuition: [
-      {
-        label: "Full programme",
-        amount: "EGP 62,000",
-        note: "Includes lab access and exam voucher",
-      },
-      { label: "Instalment plan", amount: "3 × EGP 22,000", note: "Interest-free, per module" },
-      { label: "Need-based aid", amount: "Up to 30% off", note: "Documented financial review" },
-    ],
-  },
-  {
-    slug: "digital-marketing",
-    title: "Digital Marketing",
-    category: "Marketing & Media",
-    image: heroCampus,
-    duration: "5 months",
-    format: "Online live",
-    certification: "MIA Certificate",
-    nextIntake: "20 September 2026",
-    tags: ["Performance", "Content", "Analytics"],
-    excerpt:
-      "Plan, launch and measure full-funnel campaigns with budgets, briefs and creative feedback from working practitioners.",
-    objectives: [
-      "Build channel strategies grounded in audience research",
-      "Run and optimise paid media across search and social",
-      "Produce a content system that compounds organic reach",
-      "Report performance against commercial objectives",
-    ],
-    curriculum: [
-      {
-        term: "Module 1 — Strategy",
-        items: [
-          "Audience and positioning research",
-          "Funnel design",
-          "Brand and messaging architecture",
-        ],
-      },
-      {
-        term: "Module 2 — Channels",
-        items: [
-          "Search and shopping campaigns",
-          "Paid social and creative testing",
-          "SEO and content operations",
-        ],
-      },
-      {
-        term: "Module 3 — Measurement",
-        items: ["Attribution and analytics", "Marketing automation", "Capstone campaign launch"],
-      },
-    ],
-    instructor: {
-      name: "Nour Abdelrahman",
-      title: "Industry Mentor, Growth Marketing",
-      bio: "Growth lead who has managed eight-figure regional media budgets for consumer and fintech brands.",
-      credentials: "MBA Marketing · Meta & Google Ads Certified",
-    },
-    tuition: [
-      { label: "Full programme", amount: "EGP 48,000", note: "Ad credits included" },
-      { label: "Instalment plan", amount: "3 × EGP 17,000", note: "Interest-free, per module" },
-      { label: "Alumni discount", amount: "15% off", note: "For MIA graduates" },
-    ],
-  },
-  {
-    slug: "project-management",
-    title: "Project Management Professional Track",
-    category: "Business & Leadership",
-    image: library,
-    duration: "4 months",
-    format: "Weekends",
-    certification: "PMP® Exam Preparation",
-    nextIntake: "3 October 2026",
-    tags: ["PMP", "Agile", "Risk"],
-    excerpt:
-      "A disciplined path to certification with exam simulations, templates and coaching from certified practitioners.",
-    objectives: [
-      "Master the full project lifecycle and knowledge areas",
-      "Build schedules, budgets and risk registers that hold up",
-      "Blend predictive and agile delivery approaches",
-      "Sit the certification exam with confidence",
-    ],
-    curriculum: [
-      {
-        term: "Module 1",
-        items: ["Framework and integration", "Scope and schedule", "Cost management"],
-      },
-      {
-        term: "Module 2",
-        items: ["Quality and resources", "Risk and procurement", "Stakeholder engagement"],
-      },
-      {
-        term: "Module 3",
-        items: ["Agile and hybrid delivery", "Exam simulations", "Coaching clinics"],
-      },
-    ],
-    instructor: {
-      name: "Eng. Hisham Nabil",
-      title: "Senior Faculty, Project Delivery",
-      bio: "Delivered infrastructure and IT programmes across Egypt and the Gulf, with 12 years of PMP experience.",
-      credentials: "PMP · PMI-ACP · PRINCE2 Practitioner",
-    },
-    tuition: [
-      { label: "Full programme", amount: "EGP 39,000", note: "Includes exam simulator" },
-      { label: "Instalment plan", amount: "2 × EGP 20,500", note: "Interest-free" },
-      { label: "Corporate cohort", amount: "20% off", note: "Groups of five or more" },
-    ],
-  },
-  {
-    slug: "english-communication",
-    title: "Professional English & Business Communication",
-    category: "Languages",
-    image: classroom,
-    duration: "3 months",
-    format: "On-campus / Online",
-    certification: "MIA Proficiency Certificate",
-    nextIntake: "15 September 2026",
-    tags: ["Business English", "Presentation", "Writing"],
-    excerpt:
-      "Speak, write and present with clarity in international workplaces — assessed against recognised proficiency levels.",
-    objectives: [
-      "Communicate confidently in meetings and negotiations",
-      "Write precise business correspondence and reports",
-      "Deliver structured, persuasive presentations",
-      "Advance a full proficiency band by graduation",
-    ],
-    curriculum: [
-      {
-        term: "Module 1",
-        items: ["Workplace fluency", "Pronunciation clinic", "Email and messaging"],
-      },
-      {
-        term: "Module 2",
-        items: ["Report and proposal writing", "Meeting facilitation", "Negotiation language"],
-      },
-      {
-        term: "Module 3",
-        items: ["Presentation lab", "Interview coaching", "Final proficiency assessment"],
-      },
-    ],
-    instructor: {
-      name: "Sarah Milton",
-      title: "Head of Language Studies",
-      bio: "Cambridge-trained language specialist with 15 years teaching business communication across three continents.",
-      credentials: "MA Applied Linguistics · CELTA · DELTA",
-    },
-    tuition: [
-      { label: "Full programme", amount: "EGP 24,000", note: "Materials included" },
-      { label: "Instalment plan", amount: "2 × EGP 12,500", note: "Interest-free" },
-      { label: "Student rate", amount: "20% off", note: "Valid university ID" },
-    ],
-  },
-  {
-    slug: "hr-management",
-    title: "Human Resources Management Diploma",
-    category: "Business & Leadership",
-    image: lab,
-    duration: "7 months",
-    format: "Hybrid",
-    certification: "MIA Professional Diploma",
-    nextIntake: "26 October 2026",
-    tags: ["Talent", "Labour Law", "Analytics"],
-    excerpt:
-      "Design the people systems modern organisations rely on — hiring, performance, compensation and compliance.",
-    objectives: [
-      "Build hiring funnels that reduce time-to-quality-hire",
-      "Design performance and compensation frameworks",
-      "Apply labour law confidently in daily practice",
-      "Use people analytics to guide workforce planning",
-    ],
-    curriculum: [
-      {
-        term: "Module 1",
-        items: ["HR strategy and structure", "Talent acquisition", "Onboarding design"],
-      },
-      {
-        term: "Module 2",
-        items: ["Performance management", "Compensation and benefits", "Labour law essentials"],
-      },
-      {
-        term: "Module 3",
-        items: ["People analytics", "Organisational development", "Capstone HR audit"],
-      },
-    ],
-    instructor: {
-      name: "Mona Adel",
-      title: "Faculty Lead, People & Organisation",
-      bio: "HR director turned educator, having built people functions for scale-ups and multinational subsidiaries.",
-      credentials: "SHRM-SCP · MSc Organisational Psychology",
-    },
-    tuition: [
-      { label: "Full programme", amount: "EGP 56,000", note: "Includes toolkit library" },
-      { label: "Instalment plan", amount: "3 × EGP 19,500", note: "Interest-free, per module" },
-      { label: "Merit scholarship", amount: "Up to 35% off", note: "Based on interview" },
-    ],
-  },
-];
-
 export type Faculty = {
   slug: string;
-  name: string;
-  description: string;
+  name: { en: string; ar: string };
+  description: { en: string; ar: string };
   image: string;
   gallery: string[];
   featuredPrograms: Program[];
 };
 
-function slugifyCategory(category: string): string {
-  return `faculty-${category
-    .toLowerCase()
-    .replace(/&/g, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "")}`;
+function departmentImages(slug: string, count: number): string[] {
+  return Array.from({ length: count }, (_, i) => `/images/departments/${slug}/${i + 1}.jpeg`);
 }
 
-const categoryDescriptions: Record<string, string> = {
-  "Business & Leadership":
-    "Management, finance, project delivery and people leadership tracks built around real operating decisions.",
-  Technology: "Data, analytics and applied AI, taught hands-on in fully equipped computer labs.",
-  "Marketing & Media":
-    "Full-funnel digital marketing, from channel strategy to campaign measurement.",
-  Languages: "Professional English and business communication for international workplaces.",
-};
-
-const categoryImages: Record<string, string> = {
-  "Business & Leadership": classroom,
-  Technology: lab,
-  "Marketing & Media": heroCampus,
-  Languages: library,
-};
-
-export const faculties: Faculty[] = Array.from(new Set(programs.map((p) => p.category))).map(
-  (category) => {
-    const featuredPrograms = programs.filter((program) => program.category === category);
-    const image = categoryImages[category] ?? heroCampus;
-    return {
-      slug: slugifyCategory(category),
-      name: category,
-      description: categoryDescriptions[category] ?? featuredPrograms[0]?.excerpt ?? "",
-      image,
-      gallery: [image, classroom, lab, library, heroCampus].filter(
-        (value, index, array) => array.indexOf(value) === index,
-      ),
-      featuredPrograms,
-    };
+export const faculties: Faculty[] = [
+  {
+    slug: "journalism-and-media",
+    name: { en: "Journalism & Media", ar: "صحافة و إعلام" },
+    description: {
+      en: "Students in the Journalism & Media department study everything related to journalistic and media work — from press editing and preparing reports and programmes, to public relations and the art of media presence — through a combination of specialised theoretical study and intensive practical training. The academy organises this training inside realistic television and radio studios, where students experience the atmosphere of journalistic and broadcast work directly from the start of their studies. Thanks to this intensive hands-on training, graduates of the department are academically and practically qualified to enter the media job market immediately, whether at press organisations, television and radio channels, or public relations departments within companies and institutions. Students are also taught and trained by a select group of the field's best media and journalism instructors, who combine academic expertise with genuine hands-on experience in the industry.",
+      ar: "يدرس الطالب في قسم الصحافة والإعلام كل ما يتعلق بالعمل الصحفي والإعلامي؛ من التحرير الصحفي وإعداد التقارير والبرامج، إلى العلاقات العامة وفنون الظهور الإعلامي، وذلك من خلال الجمع بين الدراسة النظرية المتخصصة والتدريب العملي المكثف الذي تحرص الأكاديمية على تنظيمه داخل استوديوهات تليفزيونية وإذاعية واقعية، حيث يعيش الطالب أجواء العمل الصحفي والتلفزيوني بشكل مباشر منذ بداية دراسته. وبفضل هذا التدريب العملي المكثف، يتخرج طالب القسم مؤهلاً علميًا وعمليًا للانخراط الفوري في سوق العمل الإعلامي، سواء في المؤسسات الصحفية أو القنوات التليفزيونية والإذاعية أو إدارات العلاقات العامة بالشركات والمؤسسات المختلفة. كما يتلقى الطالب تعليمه وتدريبه على أيدي نخبة من أفضل أساتذة الإعلام والصحافة المتخصصين، ممن يجمعون بين الخبرة الأكاديمية والممارسة العملية الفعلية في هذا المجال.",
+    },
+    image: "/images/departments/journalism-and-media/hero.jpeg",
+    gallery: [
+      "/images/departments/journalism-and-media/hero.jpeg",
+      ...departmentImages("journalism-and-media", 10),
+    ],
+    featuredPrograms: [],
   },
-);
+  {
+    slug: "business-administration",
+    name: { en: "Business Administration", ar: "إدارة أعمال" },
+    description: {
+      en: "Students in the Business Administration department study everything related to modern business management, alongside the fundamentals of accounting, statistics, and human resources management. This is achieved through a combination of specialised theoretical study and practical training, which the academy organises by having students take part in economic and management conferences and events — giving them exposure to the latest developments in the field and direct contact with experienced professionals. The academy also draws on a select group of the best management and economics professors from Egyptian public universities for this specialisation, combining academic depth with genuine practical experience in management and economics. Thanks to this blend of theory and practice, graduates of the department are academically and practically qualified to enter the job market immediately, whether in private companies and institutions or across various government and economic sectors.",
+      ar: "يدرس الطالب في قسم إدارة الأعمال كل ما يتعلق بإدارة الأعمال بمفهومها الحديث، إلى جانب أساسيات المحاسبة والإحصاء وإدارة الموارد البشرية، وذلك من خلال الجمع بين الدراسة النظرية المتخصصة والتدريب العملي الذي تحرص الأكاديمية على تنظيمه من خلال مشاركة الطلاب في الفعاليات والمؤتمرات الخاصة بالاقتصاد والإدارة، بما يتيح لهم الاطلاع على أحدث المستجدات في هذا المجال والتواصل المباشر مع أهل الخبرة فيه. كما تستعين الأكاديمية في هذا التخصص بباقة من أفضل أساتذة الإدارة والاقتصاد داخل الجامعات الحكومية المصرية، ممن يجمعون بين العمق الأكاديمي والخبرة العملية في مجالات الإدارة والاقتصاد. وبفضل هذا الدمج بين الجانب النظري والعملي، يتخرج طالب القسم مؤهلاً علميًا وعمليًا للانخراط الفوري في سوق العمل، سواء في الشركات والمؤسسات الخاصة أو في القطاعات الحكومية والاقتصادية المختلفة.",
+    },
+    image: "/images/departments/business-administration/hero.jpeg",
+    gallery: [
+      "/images/departments/business-administration/hero.jpeg",
+      ...departmentImages("business-administration", 7),
+    ],
+    featuredPrograms: [],
+  },
+  {
+    slug: "area-and-maps",
+    name: { en: "Surveying & Mapping", ar: "مساحة و خرائط" },
+    description: {
+      en: "Students in the Surveying & Mapping department study everything related to surveying work, mapping, and land-survey work. The academy also places strong emphasis on teaching AutoCAD within this department, inside its latest fully equipped computer labs, so that students can make full use of this important applied side of the field. The academy also organises intensive practical training in this department through field visits to new projects — cities, roads, and more — in cooperation with leading Egyptian contracting firms, giving students direct exposure to real surveying work on the ground. The field of surveying and mapping covers many areas, including agricultural projects, new cities, roads, and other projects of major importance to the Arab Republic of Egypt. The academy also draws on surveying specialists who work at leading Egyptian contracting firms for this department, ensuring that students' learning is grounded in genuine practical experience.",
+      ar: "يدرس الطالب في قسم المساحة والخرائط كل ما يتعلق بأعمال المساحة والخرائط والرفع المساحي، كما تحرص الأكاديمية على تدريس برنامج الأوتوكاد في هذا القسم داخل أحدث معامل الكمبيوتر المجهزة بالأكاديمية، حتى يتمكن الطالب من الاستفادة الكاملة من هذا الجانب التطبيقي المهم. كما تنظم الأكاديمية تدريبات عملية مكثفة في هذا القسم عن طريق الزيارات الميدانية لمشروعات جديدة من مدن وطرق بالتعاون مع كبرى شركات المقاولات المصرية، بما يتيح للطالب الاحتكاك المباشر بواقع العمل المساحي على أرض الواقع. ويدخل مجال المساحة والخرائط في مجالات عديدة، منها المشروعات الزراعية والمدن الجديدة والطرق وغيرها من المشروعات الهامة لجمهورية مصر العربية. كما تستعين الأكاديمية في هذا القسم بمتخصصين في الأعمال المساحية يعملون في كبرى شركات المقاولات المصرية، بما يضمن للطالب تعلمًا مبنيًا على خبرة عملية حقيقية.",
+    },
+    image: "/images/departments/area-and-maps/hero.jpeg",
+    gallery: [
+      "/images/departments/area-and-maps/hero.jpeg",
+      ...departmentImages("area-and-maps", 12),
+    ],
+    featuredPrograms: [],
+  },
+  {
+    slug: "nursing",
+    name: { en: "Nursing", ar: "تمريض" },
+    description: {
+      en: "Students in the Nursing department study everything related to nursing and healthcare services. The academy also places strong emphasis on teaching first aid within this department, in addition to studying how to care for the elderly and how to deal with children, so that students gain full exposure to the different aspects of medical services and become confidently qualified to work in the healthcare field. The academy also organises intensive practical training in this department at leading hospitals across Egypt, across different hospital departments, in addition to intensive internal practical training that gives students direct exposure to real medical cases. The academy also draws on distinguished specialists in the field of nursing for the lectures in this department, combining academic expertise with genuine hands-on hospital experience.",
+      ar: "يدرس الطالب في قسم التمريض كل ما يتعلق بالتمريض والخدمات الصحية، كما تحرص الأكاديمية على تدريس الإسعافات الأولية في هذا القسم، بالإضافة إلى دراسة كيفية رعاية المسنين والتعامل مع الأطفال، حتى يتسنى للطالب الاستفادة الكاملة من مختلف جوانب مجال الخدمات الطبية ويصبح مؤهلاً للعمل في المجال الصحي بثقة. كما تنظم الأكاديمية تدريبات عملية مكثفة في هذا القسم بكبرى المستشفيات العاملة في مصر، وذلك في مختلف أقسام المستشفيات، بالإضافة إلى التدريبات العملية الداخلية المكثفة التي تتيح للطالب الاحتكاك المباشر بالحالات الطبية الحقيقية. كما تستعين الأكاديمية في هذا القسم داخل المحاضرات بمتخصصين متميزين في مجال التمريض، ممن يجمعون بين الخبرة الأكاديمية والممارسة العملية الفعلية في المستشفيات.",
+    },
+    image: "/images/departments/nursing/hero.jpeg",
+    gallery: ["/images/departments/nursing/hero.jpeg", ...departmentImages("nursing", 11)],
+    featuredPrograms: [],
+  },
+  {
+    slug: "medical-tests",
+    name: { en: "Medical Analysis", ar: "تحاليل طبية" },
+    description: {
+      en: "Students in the Medical Analysis department study everything related to medical laboratory testing, sample preservation, and sample examination. Students in this department also undergo intensive practical training, both within lectures and through external private laboratories. Lectures focus on the aspects of drawing and preserving samples in the correct manner, in addition to studying sample examination using the latest detection devices and microscopes — the same equipment students will work with once they graduate and enter the job market. The academy also organises external practical training placements at a number of Egyptian government laboratories and private laboratories, giving students exposure to the real working environment across different settings. The academy also draws on a select group of specialised lecturers working in the field of medical analysis for this department, combining academic expertise with genuine hands-on experience in the field.",
+      ar: "يدرس الطالب في قسم التحاليل الطبية كل ما يتعلق بالتحاليل الطبية وحفظ العينات وفحصها، كما يتعرض الطالب في هذا القسم لتدريبات عملية مكثفة سواء داخل المحاضرات أو عن طريق المعامل الخاصة الخارجية. حيث يتم التركيز داخل المحاضرات على جوانب سحب العينات وحفظها بالطريقة المناسبة، بالإضافة إلى دراسة فحص العينات على أحدث أجهزة الكشف والميكروسكوب، وهي نفس الأجهزة التي يتعامل معها الطالب لاحقًا عندما يتخرج ويلتحق بسوق العمل. كما تنظم الأكاديمية تدريبات عملية خارجية في بعض المعامل الحكومية المصرية والمعامل الخاصة، بما يتيح للطالب التعرف على بيئة العمل الفعلية بمختلف أنواعها. وتستعين الأكاديمية في هذا القسم بباقة من المحاضرين المتخصصين العاملين في مجالات التحاليل الطبية، ممن يجمعون بين الخبرة الأكاديمية والممارسة العملية الفعلية في هذا المجال.",
+    },
+    image: "/images/departments/medical-tests/hero.jpeg",
+    gallery: [
+      "/images/departments/medical-tests/hero.jpeg",
+      ...departmentImages("medical-tests", 5),
+    ],
+    featuredPrograms: [],
+  },
+  {
+    slug: "petroleum-technology",
+    name: { en: "Petroleum Technology", ar: "تكنولوجيا البترول" },
+    description: {
+      en: "Students in the Petroleum Technology department study everything related to petroleum technology, well drilling, earth layers, and drill bit components across different working environments. Students are closely followed throughout the various stages of their studies, relying on accurate real-life models of drill bit components, allowing students to gain an in-depth, hands-on understanding of drilling technology rather than a purely theoretical one. The academy also places great importance on the practical side of the programme by organising regular field visits to various drilling sites in Egypt's Western Desert, in cooperation with leading Egyptian public petroleum companies, which in turn cooperate with major foreign petroleum companies — all aimed at graduating a generation of young people qualified to work in this vital sector. The academy also draws on a select group of specialised lecturers working in the fields of well drilling technology and petroleum technology for this department, combining academic expertise with genuine hands-on experience in the field.",
+      ar: "يدرس الطالب في قسم تكنولوجيا البترول كل ما يتعلق بتكنولوجيا البترول وحفر الآبار وطبقات الأرض وأجزاء بريمة الحفر في مختلف بيئات العمل. ويتم متابعة الطالب بشكل دقيق في مختلف مراحل الدراسة، حيث يتم الاعتماد على النماذج الحقيقية لأجزاء بريمة الحفر بشكل دقيق، بما يتيح للطالب التعمق في كل ما يخص تكنولوجيا الحفر بصورة عملية وليست نظرية فقط. كما تهتم الأكاديمية بالجانب العملي للدراسة من خلال تنظيم زيارات منتظمة لمواقع الحفر المختلفة بالصحراء الغربية المصرية، وذلك بالتعاون مع كبرى شركات البترول المصرية العامة، والتي تتعاون بدورها مع كبرى شركات البترول الأجنبية، وذلك لتخريج باقة من الشباب المؤهل للعمل في هذا القطاع الحيوي. كما تستعين الأكاديمية في هذا القسم بباقة من المحاضرين المتخصصين العاملين في مجالات تكنولوجيا حفر الآبار وتكنولوجيا البترول، ممن يجمعون بين الخبرة الأكاديمية والممارسة العملية الفعلية في هذا المجال.",
+    },
+    image: "/images/departments/petroleum-technology/hero.jpeg",
+    gallery: [
+      "/images/departments/petroleum-technology/hero.jpeg",
+      ...departmentImages("petroleum-technology", 17),
+    ],
+    featuredPrograms: [],
+  },
+  {
+    slug: "tourism-and-hotels",
+    name: { en: "Tourism & Hotels", ar: "سياحة و فنادق" },
+    description: {
+      en: "Students in the Tourism & Hotels department study everything related to tourism and hospitality in its various forms, especially as major economies today rely heavily on tourism activity and, by extension, on the hotel sector that hosts tourists and visitors. Students in this department study every aspect of hotel work, from welcoming guests to providing the appropriate hotel service at the highest level of professionalism. The academy also places strong emphasis on the language side of this department, given that the nature of the work requires dealing with foreign nationalities from a range of cultures and languages. The academy also organises training visits for its students to leading hotels in Cairo and Giza, where students gain direct exposure to hands-on work and how to handle different situations within hotels, in addition to placing a number of students in jobs alongside their studies, preparing them directly for the job market. The academy also draws on the best specialised lecturers working in the field of tourism and hotels for this department, as well as professors from Egyptian universities working in faculties of tourism and hotels, to deliver a distinguished study experience for students.",
+      ar: "يدرس الطالب في قسم السياحة والفنادق كل ما يتعلق بالسياحة والفندقة بمختلف جوانبها، خاصة أن الاقتصاديات الكبرى حاليًا تعتمد بشكل كبير على النشاط السياحي، وبالتبعية على قطاع الفنادق الذي يستضيف السائحين والزائرين. ويدرس الطالب في هذا القسم كافة جوانب العمل داخل الفندق، بداية من استقبال الزائرين وحتى كيفية تقديم الخدمة الفندقية المناسبة لهم بأعلى مستويات الاحترافية. كما تهتم الأكاديمية بالجانب اللغوي لطالب هذا القسم، نظرًا لطبيعة العمل التي تتطلب التعامل مع الجنسيات الأجنبية بمختلف ثقافاتهم ولغاتهم. وتنظم الأكاديمية أيضًا زيارات تدريبية لطلابها بكبرى فنادق القاهرة والجيزة، حيث يحتك الطالب بالعمل المباشر وكيفية التعامل مع المواقف المختلفة داخل الفنادق، بالإضافة إلى الاستعانة بعدد من الطلاب للعمل بجانب الدراسة، وذلك لتهيئتهم لسوق العمل بشكل مباشر. وتستعين الأكاديمية في هذا القسم بأفضل المحاضرين المتخصصين العاملين في مجال السياحة والفنادق، كما تستعين بأساتذة من الجامعات المصرية العاملين في كليات السياحة والفنادق، وذلك لتقديم تجربة دراسية مميزة للطلاب.",
+    },
+    image: "/images/departments/tourism-and-hotels/hero.jpeg",
+    gallery: [
+      "/images/departments/tourism-and-hotels/hero.jpeg",
+      ...departmentImages("tourism-and-hotels", 5),
+    ],
+    featuredPrograms: [],
+  },
+  {
+    slug: "information-systems",
+    name: { en: "Information Systems", ar: "نظم معلومات" },
+    description: {
+      en: "Students in the Information Systems department study everything related to software, website and application design, as well as various programming languages. This takes place through direct, hands-on work with modern computers inside the academy's dedicated computer labs, which are equipped with the latest devices. The academy also places importance on regularly organising visits for its students to technology conferences, and on organising their active participation in these conferences and exhibitions, giving them direct exposure to and awareness of everything new in the field of modern technology. The academy also draws on the best specialised engineers and lecturers working in the field of systems and software for this department, as well as professors from Egyptian universities working in faculties of communications and information technology, to prepare graduates for the job market and help them secure a genuine job opportunity.",
+      ar: "يدرس الطالب في قسم نظم المعلومات كل ما يتعلق بالبرمجيات وتصميم المواقع الإلكترونية والتطبيقات، وكذلك لغات البرمجة المختلفة، وذلك عن طريق احتكاك الطالب بشكل مباشر بأجهزة الكمبيوتر الحديثة داخل معامل الكمبيوتر الخاصة بالأكاديمية والمجهزة بأحدث الأجهزة. كما تهتم الأكاديمية بتنظيم زيارات لطلابها للمؤتمرات التكنولوجية بشكل دائم، وتنظيم مشاركاتهم الفعالة في هذه المؤتمرات والمعارض، والتي تتيح لهم الاحتكاك المباشر والاطلاع على كل ما هو جديد في مجال التكنولوجيا الحديثة. وتستعين الأكاديمية في هذا القسم بأفضل المهندسين والمحاضرين المتخصصين العاملين في مجال النظم والبرمجيات، كما تستعين بأساتذة من الجامعات المصرية العاملين في كليات الاتصالات وتكنولوجيا المعلومات، وذلك لتهيئة الخريج لسوق العمل ومساعدته في الحصول على فرصة عمل حقيقية.",
+    },
+    image: "/images/departments/information-systems/hero.jpeg",
+    gallery: [
+      "/images/departments/information-systems/hero.jpeg",
+      ...departmentImages("information-systems", 12),
+    ],
+    featuredPrograms: [],
+  },
+  {
+    slug: "languages-and-translation",
+    name: { en: "Languages & Translation", ar: "لغات و ترجمة" },
+    description: {
+      en: "Students in the Languages & Translation department study everything related to languages and translation through active, hands-on language practice using the latest methods. Students in this department study both English and French. Lecturers in this department also focus on conversation and direct interaction with students through active language practice, alongside strong attention to listening skills, given their important role in developing and mastering a language. Students also study translation in all its forms and types, since the translation job market requires genuine command of the language for students to secure a suitable job opportunity.",
+      ar: "يدرس الطالب في قسم اللغات والترجمة كل ما يتعلق باللغات والترجمة عن طريق الممارسة الفعالة للغة بأحدث الوسائل، حيث يدرس الطالب في هذا القسم اللغة الإنجليزية واللغة الفرنسية. كما يركز المحاضرون داخل هذا القسم على المحادثة والتفاعل بشكل مباشر مع الطلاب عن طريق الممارسة الفعالة للغة، فضلًا عن الاهتمام بمهارة الاستماع لما لها من دور مهم في تطوير اللغة وإتقانها. كما يدرس الطالب الترجمة بكافة أشكالها وأنواعها، حيث إن سوق العمل في مجال الترجمة يتطلب إتقانًا حقيقيًا للغة حتى يتسنى للطالب الحصول على فرصة عمل مناسبة.",
+    },
+    image: "/images/departments/languages-and-translation/hero.jpeg",
+    gallery: [
+      "/images/departments/languages-and-translation/hero.jpeg",
+      ...departmentImages("languages-and-translation", 2),
+    ],
+    featuredPrograms: [],
+  },
+];
 
 export const staff = [
   {

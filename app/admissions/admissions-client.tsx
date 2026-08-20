@@ -229,7 +229,7 @@ export function AdmissionsClient() {
                   value={form.program}
                   onValueChange={(v) => setForm({ ...form, program: v })}
                   options={faculties.map((f) => ({
-                    value: f.name,
+                    value: f.slug,
                     label: localizeFaculty(f, language).name,
                     icon: BookOpen,
                   }))}

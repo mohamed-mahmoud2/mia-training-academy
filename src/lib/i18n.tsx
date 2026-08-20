@@ -39,6 +39,7 @@ type Dictionary = {
     programmeFocus: (count: number) => string;
     directToFaculty: string;
     exploreFaculty: string;
+    onCampusLabel: string;
   };
   advantages: {
     eyebrow: string;
@@ -330,6 +331,7 @@ const en: Dictionary = {
     programmeFocus: (count) => `${count} programme focus`,
     directToFaculty: "Direct to faculty details",
     exploreFaculty: "Explore program",
+    onCampusLabel: "On-campus labs and lecture halls",
   },
   advantages: {
     eyebrow: "Why choose MIA",
@@ -808,6 +810,7 @@ const ar: Dictionary = {
     programmeFocus: (count) => `${count} برنامج رئيسي`,
     directToFaculty: "انتقل مباشرة لتفاصيل البرنامج",
     exploreFaculty: "استكشف البرنامج",
+    onCampusLabel: "معامل ومحاضرات داخل الحرم الجامعي",
   },
   advantages: {
     eyebrow: "لماذا تختار MIA",

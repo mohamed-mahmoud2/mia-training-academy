@@ -5,7 +5,7 @@ import { ProgramCard } from "@/components/site/ProgramCard";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { Section } from "@/components/site/Section";
-import { programs } from "@/data/site";
+import { faculties } from "@/data/site";
 import { useLanguage } from "@/lib/i18n";
 
 export function ProgramsClient() {
@@ -21,9 +21,9 @@ export function ProgramsClient() {
 
       <Section>
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {programs.map((program, i) => (
-            <Reveal key={program.slug} delay={i * 60}>
-              <ProgramCard program={program} />
+          {faculties.map((faculty, i) => (
+            <Reveal key={faculty.slug} delay={i * 60}>
+              <ProgramCard program={faculty} />
             </Reveal>
           ))}
         </div>

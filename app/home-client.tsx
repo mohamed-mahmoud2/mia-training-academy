@@ -20,7 +20,7 @@ import { CtaBanner } from "@/components/site/CtaBanner";
 import { ProgramCard } from "@/components/site/ProgramCard";
 import { Reveal } from "@/components/site/Reveal";
 import { Section, SectionHeading } from "@/components/site/Section";
-import { programs, posts } from "@/data/site";
+import { faculties, posts } from "@/data/site";
 import { useLanguage } from "@/lib/i18n";
 import { localizeCategory, localizePost, localizeTestimonial } from "@/lib/content-i18n";
 
@@ -198,9 +198,9 @@ export function HomeClient() {
           description={t.faculties.description}
         />
         <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {programs.slice(0, 6).map((program, i) => (
-            <Reveal key={program.slug} delay={i * 70}>
-              <ProgramCard program={program} />
+          {faculties.slice(0, 6).map((faculty, i) => (
+            <Reveal key={faculty.slug} delay={i * 70}>
+              <ProgramCard program={faculty} />
             </Reveal>
           ))}
         </div>
