@@ -1,10 +1,14 @@
-const graduationHero = "/images/blog/graduation-hero.jpeg";
-const graduation1 = "/images/blog/graduation-1.jpeg";
-const graduation2 = "/images/blog/graduation-2.jpeg";
-const graduation3 = "/images/blog/graduation-3.jpeg";
-const graduation4 = "/images/blog/graduation-4.jpeg";
-const graduation5 = "/images/blog/graduation-5.jpeg";
-const graduation6 = "/images/blog/graduation-6.jpeg";
+const graduationHero = "/images/blog/graduation-ceremonies/hero.jpeg";
+const graduation1 = "/images/blog/graduation-ceremonies/1.jpeg";
+const graduation2 = "/images/blog/graduation-ceremonies/2.jpeg";
+const graduation3 = "/images/blog/graduation-ceremonies/3.jpeg";
+const graduation4 = "/images/blog/graduation-ceremonies/4.jpeg";
+const graduation5 = "/images/blog/graduation-ceremonies/5.jpeg";
+const graduation6 = "/images/blog/graduation-ceremonies/6.jpeg";
+
+function blogImages(slug: string, count: number): string[] {
+  return Array.from({ length: count }, (_, i) => `/images/blog/${slug}/${i + 1}.jpeg`);
+}
 
 export const navLinks = [
   { to: "/", label: "Home" },
@@ -310,6 +314,50 @@ export const posts: Post[] = [
       graduation4,
       graduation5,
       graduation6,
+    ],
+  },
+  {
+    slug: "helping-graduates-find-work",
+    title: "Helping graduates find work",
+    category: "Campus News",
+    excerpt:
+      "From CV submissions to full employment fairs with HR leaders from partner companies — how MIA turns graduation into a job offer.",
+    content: [
+      "The academy aims to graduate cohorts of students who are ready to join the job market, through intensive, high-impact practical training that sharpens each student's skills before graduation — making them qualified to work at companies and institutions across the Egyptian, Arab and international markets.",
+      "Alongside its educational and training role, the academy also plays an important part in helping its graduates find work. It does this by submitting each graduate's CV and required documents to the Graduate Affairs department, which then forwards them to partner institutions and companies — giving graduates the chance to sit a personal interview, with a large number going on to be hired into different roles.",
+      "The academy also organises an employment fair attended by leading companies and institutions across a range of fields and specialisations. These organisations send their HR managers to meet our students and hear about their skills, opening the door for a number of them to join these institutions. The same HR managers also explain how our students and graduates can develop themselves further to make it easier to be accepted at these organisations.",
+      "In this way, the academy combines its educational and training role with a dedicated role in helping graduates step into the job market.",
+      "The academy has organised many such employment fairs over the years, with participation from telecom companies, hotels, medical institutions and television channels — fairs that have helped a great many graduates find work.",
+    ],
+    author: "MIA Editorial",
+    date: "20 August 2026",
+    read: "4 min read",
+    image: "/images/blog/helping-graduates-find-work/hero.jpeg",
+    gallery: [
+      "/images/blog/helping-graduates-find-work/hero.jpeg",
+      ...blogImages("helping-graduates-find-work", 13),
+    ],
+  },
+  {
+    slug: "the-entertainment-aspect-of-the-academy",
+    title: "The recreational side of MIA Academy",
+    category: "Campus News",
+    excerpt:
+      "From Pyramid and Alexandria excursions to Ain Sokhna getaways, Eid gifts and an annual football cup — how MIA keeps student life balanced.",
+    content: [
+      "Over the years, the academy's administration has never overlooked the recreational side of student life. Alongside its focus on theoretical and practical study, recreation plays an important role in our students' wellbeing.",
+      "The academy has organised numerous recreational and cultural trips, including visits to important historical sites such as the Pyramids, several landmarks in Alexandria, and sites around Fayoum.",
+      "The academy has also organised trips to Ain Sokhna in Suez, and other destinations that give students a chance to unwind.",
+      "The academy also marks a number of occasions such as religious holidays — distributing Eid gifts to its students, and handing out sweets during exam periods to lift students' spirits and ease exam-related stress.",
+      "The academy also organises an annual football tournament, where teams formed from different departments compete for the Academy Cup, alongside valuable cash prizes for the winning teams.",
+    ],
+    author: "MIA Editorial",
+    date: "20 August 2026",
+    read: "4 min read",
+    image: "/images/blog/the-entertainment-aspect-of-the-academy/hero.jpeg",
+    gallery: [
+      "/images/blog/the-entertainment-aspect-of-the-academy/hero.jpeg",
+      ...blogImages("the-entertainment-aspect-of-the-academy", 20),
     ],
   },
 ];
