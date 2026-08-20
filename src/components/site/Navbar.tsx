@@ -6,6 +6,7 @@ import { Languages, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { navLinks } from "@/data/site";
 import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/lib/i18n";
 
@@ -117,57 +118,92 @@ export function Navbar() {
             </Button>
             */}
 
-            <Button
-              variant="ghost"
-              size="icon"
-              aria-label={open ? t.nav.closeMenu : t.nav.openMenu}
-              aria-expanded={open}
-              onClick={() => setOpen((v) => !v)}
-              className={cn(
-                "min-h-11 min-w-11 rounded-full xl:hidden",
-                !scrolled && "text-primary-foreground hover:bg-primary-foreground/10",
-              )}
-            >
-              {open ? <X /> : <Menu />}
-            </Button>
-          </div>
-        </div>
-
-        {open && (
-          <nav className="glass-panel mb-3 ml-auto grid w-full max-w-xs gap-1 rounded-xl p-3 xl:hidden">
-            {navLinks.map((link) => {
-              const active = isLinkActive(pathname, link.to);
-              return (
-                <Link
-                  key={link.to}
-                  href={link.to}
-                  onClick={() => setOpen(false)}
+            <Sheet open={open} onOpenChange={setOpen}>
+              <SheetTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  aria-label={open ? t.nav.closeMenu : t.nav.openMenu}
+                  aria-expanded={open}
                   className={cn(
-                    "rounded-lg px-4 py-3 text-start text-sm font-medium transition-colors hover:bg-muted",
-                    active ? "bg-primary-soft text-secondary-foreground" : "text-foreground",
+                    "min-h-11 min-w-11 rounded-full xl:hidden",
+                    !scrolled && "text-primary-foreground hover:bg-primary-foreground/10",
                   )}
                 >
-                  {navLabels[link.to] ?? link.label}
-                </Link>
-              );
-            })}
-            <Button
-              variant="ghost"
-              onClick={toggleLanguage}
-              className="mt-1 w-full justify-start gap-1.5 rounded-lg px-4 text-sm font-medium sm:hidden"
-            >
-              <Languages className="h-4 w-4" />
-              {t.languageSwitcher.label}
-            </Button>
-            {/* Apply online — disabled for now
-            <Button asChild variant="hero" className="mt-2 w-full">
-              <Link href="/admissions" onClick={() => setOpen(false)}>
-                {t.nav.applyNow}
-              </Link>
-            </Button>
-            */}
-          </nav>
-        )}
+                  {open ? <X /> : <Menu />}
+                </Button>
+              </SheetTrigger>
+              <SheetContent
+                side="right"
+                showClose={false}
+                className="flex w-4/5 flex-col gap-0 p-0 sm:max-w-sm"
+              >
+                <div className="shrink-0 border-b border-border p-6">
+                  <Link
+                    href="/"
+                    onClick={() => setOpen(false)}
+                    className="flex items-center gap-3"
+                  >
+                    <img
+                      src="/images/mia-logo.webp"
+                      alt="MIA Academy logo"
+                      width={40}
+                      height={40}
+                      className="h-10 w-10 shrink-0 object-contain"
+                    />
+                    <span className="min-w-0">
+                      <SheetTitle className="truncate text-start text-base font-semibold text-foreground">
+                        MIA Academy
+                      </SheetTitle>
+                      <span className="block truncate text-start text-[10px] tracking-[0.14em] text-muted-foreground uppercase">
+                        {t.nav.subtitle}
+                      </span>
+                    </span>
+                  </Link>
+                </div>
+
+                <nav className="flex-1 space-y-1 overflow-y-auto p-4">
+                  {navLinks.map((link) => {
+                    const active = isLinkActive(pathname, link.to);
+                    return (
+                      <Link
+                        key={link.to}
+                        href={link.to}
+                        onClick={() => setOpen(false)}
+                        className={cn(
+                          "block rounded-xl px-4 py-3.5 text-start text-base font-medium transition-colors",
+                          active
+                            ? "bg-primary-soft text-secondary-foreground"
+                            : "text-foreground hover:bg-muted",
+                        )}
+                      >
+                        {navLabels[link.to] ?? link.label}
+                      </Link>
+                    );
+                  })}
+                  {/* Apply online — disabled for now
+                  <Button asChild variant="hero" className="mt-2 w-full">
+                    <Link href="/admissions" onClick={() => setOpen(false)}>
+                      {t.nav.applyNow}
+                    </Link>
+                  </Button>
+                  */}
+                </nav>
+
+                <div className="shrink-0 border-t border-border p-4 sm:hidden">
+                  <Button
+                    variant="outline"
+                    onClick={toggleLanguage}
+                    className="w-full justify-center gap-1.5 rounded-full"
+                  >
+                    <Languages className="h-4 w-4" />
+                    {t.languageSwitcher.label}
+                  </Button>
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
+        </div>
       </div>
     </div>
   );
