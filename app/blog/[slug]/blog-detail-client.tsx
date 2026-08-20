@@ -1,15 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, CalendarDays, Clock } from "lucide-react";
-import { useEffect, useState } from "react";
+import { ArrowLeft, CalendarDays, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ImageGallery } from "@/components/site/ImageGallery";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { Section } from "@/components/site/Section";
 import { CtaBanner } from "@/components/site/CtaBanner";
 import { posts, type Post } from "@/data/site";
-import { useIsMobile } from "@/hooks/use-mobile";
 import { useLanguage } from "@/lib/i18n";
 import { localizeCategory, localizePost } from "@/lib/content-i18n";
 
@@ -21,49 +20,6 @@ export function BlogDetailClient({ post: rawPost }: { post: Post }) {
     .slice(0, 3);
 
   const gallery = post.gallery ?? [post.image];
-  const isMobile = useIsMobile();
-  const imagesPerSlide = isMobile ? 1 : 3;
-  const totalSlides = Math.ceil(gallery.length / imagesPerSlide);
-
-  const [gallerySlide, setGallerySlide] = useState(0);
-  const [dragStart, setDragStart] = useState<number | null>(null);
-
-  const goToPrevious = () => setGallerySlide((prev) => (prev === 0 ? totalSlides - 1 : prev - 1));
-  const goToNext = () => setGallerySlide((prev) => (prev + 1) % totalSlides);
-
-  const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
-    const clientX = "touches" in e ? e.touches[0]!.clientX : (e as React.MouseEvent).clientX;
-    setDragStart(clientX);
-  };
-
-  useEffect(() => {
-    if (dragStart === null) return;
-
-    const handleDragEnd = (e: MouseEvent | TouchEvent) => {
-      const clientX =
-        "changedTouches" in e ? e.changedTouches[0]!.clientX : (e as MouseEvent).clientX;
-      const dragDistance = dragStart - clientX;
-      const threshold = 50;
-
-      if (dragDistance > threshold) {
-        goToNext();
-      } else if (dragDistance < -threshold) {
-        goToPrevious();
-      }
-      setDragStart(null);
-    };
-
-    document.addEventListener("mouseup", handleDragEnd);
-    document.addEventListener("touchend", handleDragEnd);
-
-    return () => {
-      document.removeEventListener("mouseup", handleDragEnd);
-      document.removeEventListener("touchend", handleDragEnd);
-    };
-  }, [dragStart, totalSlides]);
-
-  const galleryStart = gallerySlide * imagesPerSlide;
-  const visibleGalleryImages = gallery.slice(galleryStart, galleryStart + imagesPerSlide);
 
   return (
     <>
@@ -138,65 +94,16 @@ export function BlogDetailClient({ post: rawPost }: { post: Post }) {
 
       {gallery.length > 1 && (
         <Section muted>
-          <div className="mb-8">
-            <h2 className="text-2xl font-semibold text-foreground">{t.blogDetail.gallery}</h2>
-          </div>
-          <div className="relative">
-            <div
-              className="grid cursor-grab grid-cols-1 gap-4 select-none active:cursor-grabbing md:grid-cols-3"
-              onMouseDown={handleDragStart}
-              onTouchStart={handleDragStart}
-            >
-              {visibleGalleryImages.map((image, index) => (
-                <Reveal key={`${gallerySlide}-${index}`} delay={index * 50}>
-                  <div className="overflow-hidden rounded-xl border border-border">
-                    <img
-                      src={image}
-                      alt={`${post.title} gallery image ${galleryStart + index + 1}`}
-                      width={500}
-                      height={600}
-                      draggable={false}
-                      onDragStart={(e) => e.preventDefault()}
-                      className="h-[350px] w-full object-cover object-top pointer-events-none"
-                    />
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-            {totalSlides > 1 && (
-              <div className="mt-6 flex items-center justify-between">
-                <button
-                  type="button"
-                  aria-label={t.blogDetail.previousSlide}
-                  onClick={goToPrevious}
-                  className="grid h-10 w-10 cursor-pointer place-items-center rounded-full border border-border bg-card text-foreground transition hover:bg-muted"
-                >
-                  <ArrowLeft className="h-4 w-4 rtl:rotate-180" />
-                </button>
-                <div className="flex gap-2">
-                  {Array.from({ length: totalSlides }).map((_, index) => (
-                    <button
-                      key={index}
-                      type="button"
-                      aria-label={t.blogDetail.goToSlide(index + 1)}
-                      onClick={() => setGallerySlide(index)}
-                      className={`h-2.5 w-2.5 cursor-pointer rounded-full transition ${
-                        index === gallerySlide ? "bg-primary" : "bg-muted-foreground/40"
-                      }`}
-                    />
-                  ))}
-                </div>
-                <button
-                  type="button"
-                  aria-label={t.blogDetail.nextSlide}
-                  onClick={goToNext}
-                  className="grid h-10 w-10 cursor-pointer place-items-center rounded-full border border-border bg-card text-foreground transition hover:bg-muted"
-                >
-                  <ArrowRight className="h-4 w-4 rtl:rotate-180" />
-                </button>
-              </div>
-            )}
-          </div>
+          <h2 className="mb-8 text-2xl font-semibold text-foreground">{t.blogDetail.gallery}</h2>
+          <ImageGallery
+            images={gallery}
+            altBase={post.title}
+            labels={{
+              previousSlide: t.blogDetail.previousSlide,
+              nextSlide: t.blogDetail.nextSlide,
+              goToSlide: t.blogDetail.goToSlide,
+            }}
+          />
         </Section>
       )}
 
