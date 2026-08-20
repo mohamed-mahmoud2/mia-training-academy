@@ -1,12 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { Linkedin, Mail } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { Section } from "@/components/site/Section";
+import { StaffCard } from "@/components/site/StaffCard";
 import { staff } from "@/data/site";
 import { useLanguage } from "@/lib/i18n";
 import { localizeCategory, localizeStaff } from "@/lib/content-i18n";
@@ -44,45 +44,10 @@ export function StaffClient() {
           ))}
         </Reveal>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {visible.map((person, i) => (
             <Reveal key={person.name} delay={i * 50}>
-              <article className="hover-lift h-full rounded-2xl border border-border bg-card p-7 shadow-soft">
-                <div className="flex min-w-0 items-center gap-4">
-                  <span
-                    aria-hidden
-                    className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-primary text-lg font-semibold text-primary-foreground"
-                  >
-                    {person.initials.slice(0, 2)}
-                  </span>
-                  <span className="min-w-0">
-                    <span className="block truncate font-semibold text-foreground">
-                      {person.name}
-                    </span>
-                    <span className="block text-sm text-muted-foreground">{person.role}</span>
-                  </span>
-                </div>
-                <p className="mt-5 text-xs font-semibold tracking-wide text-accent-foreground uppercase">
-                  {person.qualification}
-                </p>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{person.bio}</p>
-                <div className="mt-6 flex gap-2">
-                  <a
-                    href="#"
-                    aria-label={`${person.name} on LinkedIn`}
-                    className="grid h-11 w-11 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:border-accent hover:text-accent-foreground"
-                  >
-                    <Linkedin className="h-4 w-4" />
-                  </a>
-                  <a
-                    href="mailto:faculty@mia-academy.edu"
-                    aria-label={`Email ${person.name}`}
-                    className="grid h-11 w-11 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:border-accent hover:text-accent-foreground"
-                  >
-                    <Mail className="h-4 w-4" />
-                  </a>
-                </div>
-              </article>
+              <StaffCard person={person} />
             </Reveal>
           ))}
         </div>

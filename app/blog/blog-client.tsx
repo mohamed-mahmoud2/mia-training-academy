@@ -5,6 +5,7 @@ import { CalendarDays, Clock } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { PageHero } from "@/components/site/PageHero";
+import { PostCard } from "@/components/site/PostCard";
 import { Reveal } from "@/components/site/Reveal";
 import { Section, SectionHeading } from "@/components/site/Section";
 import { posts } from "@/data/site";
@@ -18,8 +19,7 @@ export function BlogClient() {
   const [category, setCategory] = useState("All");
   const [visibleCount, setVisibleCount] = useState(3);
   const featured = localizePost(posts[0]!, language);
-  const rest = posts.map((p) => localizePost(p, language));
-  const filtered = category === "All" ? rest : rest.filter((p) => p.category === category);
+  const filtered = category === "All" ? posts : posts.filter((p) => p.category === category);
   const visible = filtered.slice(0, visibleCount);
 
   return (
@@ -101,44 +101,7 @@ export function BlogClient() {
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {visible.map((post, i) => (
             <Reveal key={post.slug} delay={i * 60}>
-              <Link
-                href={`/blog/${post.slug}`}
-                className="hover-lift flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-soft"
-              >
-                <div className="relative">
-                  <img
-                    src={post.image}
-                    alt={post.title}
-                    width={400}
-                    height={225}
-                    loading="lazy"
-                    className="h-64 w-full object-cover object-top"
-                  />
-                  <span className="absolute top-4 left-4 w-fit rounded-full bg-primary-soft px-3 py-1 text-xs font-semibold text-secondary-foreground shadow-soft">
-                    {localizeCategory(post.category, language)}
-                  </span>
-                </div>
-                <div className="flex flex-1 flex-col p-6">
-                  <h3 className="text-lg leading-snug font-semibold text-foreground">
-                    {post.title}
-                  </h3>
-                  <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
-                    {post.excerpt}
-                  </p>
-                  <div className="mt-6 flex flex-wrap items-center gap-3 border-t border-border pt-5 text-xs text-muted-foreground">
-                    <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-primary text-[10px] font-semibold text-primary-foreground">
-                      {post.author
-                        .split(" ")
-                        .slice(-2)
-                        .map((n) => n[0])
-                        .join("")}
-                    </span>
-                    <span className="font-medium text-foreground">{post.author}</span>
-                    <span>{post.date}</span>
-                    <span>· {post.read}</span>
-                  </div>
-                </div>
-              </Link>
+              <PostCard post={post} />
             </Reveal>
           ))}
         </div>

@@ -20,9 +20,15 @@ import { CtaBanner } from "@/components/site/CtaBanner";
 import { ProgramCard } from "@/components/site/ProgramCard";
 import { Reveal } from "@/components/site/Reveal";
 import { Section, SectionHeading } from "@/components/site/Section";
-import { faculties, posts } from "@/data/site";
+import { StaffCoverflow } from "@/components/site/StaffCoverflow";
+import { faculties, posts, staff } from "@/data/site";
 import { useLanguage } from "@/lib/i18n";
-import { localizeCategory, localizePost, localizeTestimonial } from "@/lib/content-i18n";
+import {
+  localizeCategory,
+  localizePost,
+  localizeStaff,
+  localizeTestimonial,
+} from "@/lib/content-i18n";
 
 const heroImage = "/images/hero-campus.jpg";
 
@@ -93,6 +99,7 @@ export function HomeClient() {
   const { t, language } = useLanguage();
   const [active, setActive] = useState(0);
   const [dragStart, setDragStart] = useState<number | null>(null);
+  const staffPreview = staff.map((person) => localizeStaff(person, language));
 
   const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
     const clientX = "touches" in e ? e.touches[0]!.clientX : (e as React.MouseEvent).clientX;
@@ -373,6 +380,31 @@ export function HomeClient() {
           <Button asChild variant="outline" size="lg">
             <Link href="/blog">
               {t.news.allArticles}
+              <ArrowRight className="rtl:rotate-180" />
+            </Link>
+          </Button>
+        </div>
+      </Section>
+
+      <Section>
+        <SectionHeading
+          eyebrow={t.homeStaff.eyebrow}
+          title={t.homeStaff.title}
+          description={t.homeStaff.description}
+        />
+        <Reveal className="mt-14">
+          <StaffCoverflow
+            people={staffPreview}
+            labels={{
+              previousSlide: t.homeStaff.previousSlide,
+              nextSlide: t.homeStaff.nextSlide,
+            }}
+          />
+        </Reveal>
+        <div className="mt-10 text-center">
+          <Button asChild variant="outline" size="lg">
+            <Link href="/staff">
+              {t.homeStaff.viewAll}
               <ArrowRight className="rtl:rotate-180" />
             </Link>
           </Button>

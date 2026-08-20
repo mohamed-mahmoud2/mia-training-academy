@@ -228,6 +228,14 @@ type Dictionary = {
     ctaDescription: string;
     viewOpenPositions: string;
   };
+  homeStaff: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    viewAll: string;
+    previousSlide: string;
+    nextSlide: string;
+  };
   academicsPage: {
     eyebrow: string;
     title: string;
@@ -656,6 +664,14 @@ const en: Dictionary = {
     ctaDescription:
       "We are recruiting practitioners in data, finance, design and engineering for evening and weekend cohorts.",
     viewOpenPositions: "View open positions",
+  },
+  homeStaff: {
+    eyebrow: "Our people",
+    title: "Meet the people behind MIA",
+    description: "Academic leadership, faculty and mentors who teach every cohort we run.",
+    viewAll: "Meet the full team",
+    previousSlide: "Previous team member",
+    nextSlide: "Next team member",
   },
   academicsPage: {
     eyebrow: "Academics",
@@ -1134,6 +1150,14 @@ const ar: Dictionary = {
     ctaDescription:
       "نبحث حاليًا عن ممارسين في مجالات البيانات والتمويل والتصميم والهندسة لدفعات مسائية ونهاية الأسبوع.",
     viewOpenPositions: "عرض الوظائف الشاغرة",
+  },
+  homeStaff: {
+    eyebrow: "فريقنا",
+    title: "تعرّف على فريق MIA",
+    description: "قيادة أكاديمية، وأعضاء هيئة تدريس ومرشدون يقومون بتدريس كل دفعاتنا.",
+    viewAll: "تعرّف على الفريق كامل",
+    previousSlide: "عضو الفريق السابق",
+    nextSlide: "عضو الفريق التالي",
   },
   academicsPage: {
     eyebrow: "الشؤون الأكاديمية",

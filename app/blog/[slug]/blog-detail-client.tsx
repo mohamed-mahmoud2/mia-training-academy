@@ -5,6 +5,7 @@ import { ArrowLeft, CalendarDays, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ImageGallery } from "@/components/site/ImageGallery";
 import { PageHero } from "@/components/site/PageHero";
+import { PostCard } from "@/components/site/PostCard";
 import { Reveal } from "@/components/site/Reveal";
 import { Section } from "@/components/site/Section";
 import { CtaBanner } from "@/components/site/CtaBanner";
@@ -94,10 +95,10 @@ export function BlogDetailClient({ post: rawPost }: { post: Post }) {
 
       {gallery.length > 1 && (
         <Section muted>
-          <h2 className="mb-8 text-2xl font-semibold text-foreground">{t.blogDetail.gallery}</h2>
           <ImageGallery
             images={gallery}
             altBase={post.title}
+            sectionLabel={t.blogDetail.gallery}
             labels={{
               previousSlide: t.blogDetail.previousSlide,
               nextSlide: t.blogDetail.nextSlide,
@@ -113,34 +114,9 @@ export function BlogDetailClient({ post: rawPost }: { post: Post }) {
             {t.blogDetail.moreIn(localizeCategory(post.category, language))}
           </h2>
           <div className="mt-6 grid gap-6 md:grid-cols-3">
-            {related.map((rawItem) => {
-              const item = localizePost(rawItem, language);
-              return (
-                <Link
-                  key={item.slug}
-                  href={`/blog/${item.slug}`}
-                  className="hover-lift flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-soft"
-                >
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    width={400}
-                    height={225}
-                    loading="lazy"
-                    className="h-40 w-full object-cover object-top"
-                  />
-                  <div className="flex flex-1 flex-col p-5">
-                    <h3 className="text-base leading-snug font-semibold text-foreground">
-                      {item.title}
-                    </h3>
-                    <p className="mt-3 flex items-center gap-2 text-xs text-muted-foreground">
-                      <CalendarDays className="h-4 w-4 shrink-0" />
-                      {item.date} · {item.read}
-                    </p>
-                  </div>
-                </Link>
-              );
-            })}
+            {related.map((item) => (
+              <PostCard key={item.slug} post={item} />
+            ))}
           </div>
         </Section>
       )}

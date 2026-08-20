@@ -112,10 +112,10 @@ function FacultyDetail({ rawFaculty }: { rawFaculty: Faculty }) {
       </Section>
 
       <Section>
-        <h2 className="mb-8 text-2xl font-semibold text-foreground">{t.facultyDetail.gallery}</h2>
         <ImageGallery
           images={rawFaculty.gallery}
           altBase={faculty.name}
+          sectionLabel={t.facultyDetail.gallery}
           labels={{
             previousSlide: t.facultyDetail.previousSlide,
             nextSlide: t.facultyDetail.nextSlide,

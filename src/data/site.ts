@@ -183,6 +183,7 @@ export const staff = [
     qualification: "PhD Education Management",
     bio: "Guides MIA's academic strategy and accreditation agenda across all faculties.",
     initials: "AS",
+    photo: "https://i.pravatar.cc/300?img=12",
   },
   {
     name: "Dr. Yasmine El-Sharkawy",
@@ -191,6 +192,7 @@ export const staff = [
     qualification: "PhD Management, INSEAD",
     bio: "Leads the executive education portfolio and corporate learning partnerships.",
     initials: "YE",
+    photo: "https://i.pravatar.cc/300?img=47",
   },
   {
     name: "Eng. Karim Fahmy",
@@ -199,6 +201,7 @@ export const staff = [
     qualification: "MSc Computer Science",
     bio: "Builds MIA's applied machine learning curriculum and lab infrastructure.",
     initials: "KF",
+    photo: "https://i.pravatar.cc/300?img=33",
   },
   {
     name: "Nour Abdelrahman",
@@ -207,6 +210,7 @@ export const staff = [
     qualification: "MBA Marketing",
     bio: "Brings live campaign budgets and agency briefs into the classroom.",
     initials: "NA",
+    photo: "https://i.pravatar.cc/300?img=45",
   },
   {
     name: "Eng. Hisham Nabil",
@@ -215,6 +219,7 @@ export const staff = [
     qualification: "PMP · PMI-ACP",
     bio: "Trains delivery leaders across infrastructure, energy and technology sectors.",
     initials: "HN",
+    photo: "https://i.pravatar.cc/300?img=13",
   },
   {
     name: "Sarah Milton",
@@ -223,6 +228,7 @@ export const staff = [
     qualification: "MA Applied Linguistics",
     bio: "Designs MIA's proficiency framework and language assessment standards.",
     initials: "SM",
+    photo: "https://i.pravatar.cc/300?img=44",
   },
   {
     name: "Mona Adel",
@@ -231,6 +237,7 @@ export const staff = [
     qualification: "SHRM-SCP",
     bio: "Connects HR theory with the realities of regional labour markets.",
     initials: "MA",
+    photo: "https://i.pravatar.cc/300?img=25",
   },
   {
     name: "Tarek Halim",
@@ -239,6 +246,7 @@ export const staff = [
     qualification: "CFA · MSc Finance",
     bio: "Runs seasonal masterclasses on payments, lending and regulation.",
     initials: "TH",
+    photo: "https://i.pravatar.cc/300?img=51",
   },
   {
     name: "Dina Roshdy",
@@ -247,6 +255,7 @@ export const staff = [
     qualification: "MSc Career Development",
     bio: "Oversees mentorship, employer relations and graduate placement.",
     initials: "DR",
+    photo: "https://i.pravatar.cc/300?img=28",
   },
   {
     name: "Omar Ghaly",
@@ -255,6 +264,7 @@ export const staff = [
     qualification: "AWS Solutions Architect Pro",
     bio: "Mentors capstone teams on production-grade cloud deployments.",
     initials: "OG",
+    photo: "https://i.pravatar.cc/300?img=14",
   },
   {
     name: "Laila Mansour",
@@ -263,6 +273,7 @@ export const staff = [
     qualification: "MA Service Design",
     bio: "Facilitates innovation sprints with partner organisations.",
     initials: "LM",
+    photo: "https://i.pravatar.cc/300?img=48",
   },
   {
     name: "Ahmed Sobhy",
@@ -271,6 +282,7 @@ export const staff = [
     qualification: "MSc Quality Systems",
     bio: "Maintains MIA's international accreditation and audit readiness.",
     initials: "AS2",
+    photo: "https://i.pravatar.cc/300?img=15",
   },
 ];
 
